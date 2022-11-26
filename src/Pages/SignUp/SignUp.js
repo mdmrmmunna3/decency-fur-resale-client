@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
-import bgImg from '../../assets/bg-img/signup.jpg'
+// import bgImg from '../../assets/bg-img/signup.jpg'
 
 const SignUp = () => {
     const { googleSignUp, createUser } = useContext(AuthContext);
@@ -39,19 +39,19 @@ const SignUp = () => {
 
     return (
         <section
-            style={{
-                backgroundImage: `url(${bgImg})`,
-                backgroundSize: 'cover',
-                backgroundRepeat: 'no-repeat',
-            }}
+            // style={{
+            //     backgroundImage: `url(${bgImg})`,
+            //     backgroundSize: 'cover',
+            //     backgroundRepeat: 'no-repeat',
+            // }}
             className='h-[800px] flex justify-center items-center'>
             <div className='w-96 p-7'>
-                <h2 className='text-2xl font-bold text-center text-white'>Sign Up</h2>
+                <h2 className='text-2xl font-bold text-center'>Sign Up</h2>
                 <form onSubmit={handleSubmit(handleSignUp)}>
 
                     <div className="form-control w-full max-w-xs">
                         <label className="label">
-                            <span className="label-text text-white">Name</span>
+                            <span className="label-text">Name</span>
                         </label>
                         <input type='text'
                             {...register("name", {
@@ -64,7 +64,7 @@ const SignUp = () => {
 
                     <div className="form-control w-full max-w-xs">
                         <label className="label">
-                            <span className="label-text text-white">Email</span>
+                            <span className="label-text">Email</span>
                         </label>
                         <input type='email'
                             {...register('email', {
@@ -77,7 +77,7 @@ const SignUp = () => {
 
                     <div className="form-control w-full max-w-xs">
                         <label className="label">
-                            <span className="label-text text-white">Password</span>
+                            <span className="label-text">Password</span>
                         </label>
                         <input type="password"
                             {...register('password', {
@@ -109,7 +109,7 @@ const SignUp = () => {
                                 })
                                 }
                                 name="radio-7" className="radio radio-info" />
-                            <label >Seller</label>
+                            <label>Seller</label>
                         </div>
                     </div>
 

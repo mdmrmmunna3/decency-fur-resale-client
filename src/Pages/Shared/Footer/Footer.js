@@ -4,7 +4,7 @@ import { FaFacebook, FaGithub, FaInstagram, FaTwitter, FaYoutube } from "react-i
 
 const Footer = () => {
     return (
-        <section className='my-6 py-20 px-10 text-white bg-black '
+        <section className='my-6 py-20 px-4 text-white bg-black '
 
         >
             <footer className="p-6 dark:bg-gray-800 dark:text-gray-100">
