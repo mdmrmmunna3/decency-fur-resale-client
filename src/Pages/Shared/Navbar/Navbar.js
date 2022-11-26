@@ -6,10 +6,10 @@ import './Navbar.css';
 const Nabvar = () => {
     const menuItems = <React.Fragment>
         <li><Link to="/home">Home</Link></li>
-        <li><Link to="/appoinment">Categories</Link>
+        <li><Link to="/categories">Categories</Link>
 
         </li>
-        <li><Link to="/about">Blogs</Link></li>
+        <li><Link to="/blog">Blogs</Link></li>
         
     </React.Fragment>
     return (
