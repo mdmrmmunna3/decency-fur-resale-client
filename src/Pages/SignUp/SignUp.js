@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 const SignUp = () => {
-    const {googleSignUp} = useContext(AuthContext);
+    const {googleSignUp, createUser} = useContext(AuthContext);
     const {register, handleSubmit, formState: { errors } } = useForm();
     const [signUpError, setSignUpError] = useState('');
 
@@ -17,11 +17,24 @@ const SignUp = () => {
             })
             .catch(err => console.error(err));
     }
+
+    // handleSignUp with email and password
+    const handleSignUp = data => {
+        setSignUpError('');
+        console.log(data)
+        createUser(data.email, data.password)
+        .then(result => {
+            const user = result.user;
+            console.log(user);
+        })
+        .catch(err => console.error(err));
+    }
+    
     return (
         <section className='h-[800px] flex justify-center items-center'>
             <div className='w-96 p-7'>
                 <h2 className='text-2xl font-bold text-center'>Sign Up</h2>
-                <form onSubmit={handleSubmit()}>
+                <form onSubmit={handleSubmit(handleSignUp)}>
 
                     <div className="form-control w-full max-w-xs">
                         <label className="label">
