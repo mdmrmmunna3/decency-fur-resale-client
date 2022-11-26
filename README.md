@@ -6,6 +6,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
+### Project-Desciption:
+
+* this porject build in resale furniture website , use sale used furniture for second hands product.
+
 ### `npm start`
 
 Runs the app in the development mode.\
