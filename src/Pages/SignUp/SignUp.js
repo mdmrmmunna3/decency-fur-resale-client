@@ -1,11 +1,12 @@
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 const SignUp = () => {
-    const {googleSignUp, createUser} = useContext(AuthContext);
-    const {register, handleSubmit, formState: { errors } } = useForm();
+    const { googleSignUp, createUser } = useContext(AuthContext);
+    const { register, handleSubmit, formState: { errors } } = useForm();
     const [signUpError, setSignUpError] = useState('');
 
     // handleSignup WITH Google
@@ -14,6 +15,7 @@ const SignUp = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
+                toast.success('SignUp Successfully')
             })
             .catch(err => console.error(err));
     }
@@ -23,13 +25,17 @@ const SignUp = () => {
         setSignUpError('');
         console.log(data)
         createUser(data.email, data.password)
-        .then(result => {
-            const user = result.user;
-            console.log(user);
-        })
-        .catch(err => console.error(err));
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                toast.success('User Create Successfully')
+            })
+            .catch(err => {
+                console.error(err.message);
+                setSignUpError(err.message);
+            });
     }
-    
+
     return (
         <section className='h-[800px] flex justify-center items-center'>
             <div className='w-96 p-7'>

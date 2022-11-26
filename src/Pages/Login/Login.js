@@ -1,15 +1,34 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 const Login = () => {
+    const { logIn } = useContext(AuthContext);
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [loginError, setLoginError] = useState('');
+
+    // user login
+    const handleLogIn = data => {
+        setLoginError('');
+        logIn(data.email, data.password)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                toast.success('Login Successfull');
+            })
+            .catch(err => {
+                console.error(err.message);
+                setLoginError(err.message);
+            })
+    }
+
     return (
         <section className='h-[800px] flex justify-center items-center'>
             <div className='w-96 p-7'>
                 <h2 className='text-2xl font-bold text-center'>Login</h2>
-                <form onSubmit={handleSubmit()}>
+                <form onSubmit={handleSubmit(handleLogIn)}>
 
                     <div className="form-control w-full max-w-xs">
                         <label className="label">
