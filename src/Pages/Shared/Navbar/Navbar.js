@@ -5,20 +5,26 @@ import './Navbar.css';
 // import logo from '../../../assets/logo/furniture-logo.png'
 
 const Nabvar = () => {
-    const {user} = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
+
+    const handleLogOut = () => {
+        logOut()
+            .then(() => { })
+            .catch(err => console.error(err));
+    }
 
     const menuItems = <React.Fragment>
         <li><Link to="/home">Home</Link></li>
         <li><Link to="/categories">Categories</Link>
         </li>
         <li><Link to="/blog">Blogs</Link></li>
-        {/* {user?.uid ?
+        {user?.uid ?
             <>
                 <li><Link to="/dashboard">Dashboard</Link></li>
                 <li><button onClick={handleLogOut}>SignOut</button></li>
             </>
             :
-            <li><Link to="/login">Login</Link></li>} */}
+            <li><Link to="/login">Login</Link></li>}
 
     </React.Fragment>
     return (
