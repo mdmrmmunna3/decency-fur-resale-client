@@ -12,16 +12,19 @@ const AuthProvider = ({ children }) => {
     // signup with googlepop 
     const googleProvider = new GoogleAuthProvider();
     const googleSignUp = () => {
+        setLoading(true);
         return signInWithPopup(auth, googleProvider);
     }
 
     // create user with email and password 
     const createUser = (email, password) => {
+        setLoading(true);
         return createUserWithEmailAndPassword(auth, email, password);
     }
 
     // login in with email and password 
     const logIn = (email, password) => {
+        setLoading(true);
         return signInWithEmailAndPassword(auth, email, password);
     }
 
@@ -43,6 +46,7 @@ const AuthProvider = ({ children }) => {
 
     const authInfo = {
         user,
+        loading,
         googleSignUp,
         createUser,
         logIn,

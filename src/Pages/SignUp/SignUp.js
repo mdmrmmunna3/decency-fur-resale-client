@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
+import bgImg from '../../assets/bg-img/signup.jpg'
 
 const SignUp = () => {
     const { googleSignUp, createUser } = useContext(AuthContext);
@@ -15,7 +16,7 @@ const SignUp = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
-                toast.success('SignUp Successfully')
+                toast.success('SignUp Successfully');
             })
             .catch(err => console.error(err));
     }
@@ -28,7 +29,7 @@ const SignUp = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
-                toast.success('User Create Successfully')
+                toast.success('User Create Successfully');
             })
             .catch(err => {
                 console.error(err.message);
@@ -37,14 +38,20 @@ const SignUp = () => {
     }
 
     return (
-        <section className='h-[800px] flex justify-center items-center'>
+        <section
+            style={{
+                backgroundImage: `url(${bgImg})`,
+                backgroundSize: 'cover',
+                backgroundRepeat: 'no-repeat',
+            }}
+            className='h-[800px] flex justify-center items-center'>
             <div className='w-96 p-7'>
-                <h2 className='text-2xl font-bold text-center'>Sign Up</h2>
+                <h2 className='text-2xl font-bold text-center text-white'>Sign Up</h2>
                 <form onSubmit={handleSubmit(handleSignUp)}>
 
                     <div className="form-control w-full max-w-xs">
                         <label className="label">
-                            <span className="label-text">Name</span>
+                            <span className="label-text text-white">Name</span>
                         </label>
                         <input type='text'
                             {...register("name", {
@@ -57,7 +64,7 @@ const SignUp = () => {
 
                     <div className="form-control w-full max-w-xs">
                         <label className="label">
-                            <span className="label-text">Email</span>
+                            <span className="label-text text-white">Email</span>
                         </label>
                         <input type='email'
                             {...register('email', {
@@ -70,7 +77,7 @@ const SignUp = () => {
 
                     <div className="form-control w-full max-w-xs">
                         <label className="label">
-                            <span className="label-text">Password</span>
+                            <span className="label-text text-white">Password</span>
                         </label>
                         <input type="password"
                             {...register('password', {
@@ -82,6 +89,30 @@ const SignUp = () => {
                             placeholder="password" className="input input-bordered w-full max-w-xs" />
                         {errors.password && <p className='text-red-600'>{errors.password?.message}</p>}
                     </div>
+
+                    {/* check option  */}
+                    <div className='mt-2'>
+                        <div className='flex items-center'>
+                            <input type="radio"
+                                {...register("radio", {
+                                    required: 'radio is required'
+                                })
+                                }
+                                name="radio-7" className="radio radio-info" />
+                            <label >Buyer</label>
+                        </div>
+                        <br />
+                        <div className='flex items-center'>
+                            <input type="radio"
+                                {...register("radio", {
+                                    required: 'radio is required'
+                                })
+                                }
+                                name="radio-7" className="radio radio-info" />
+                            <label >Seller</label>
+                        </div>
+                    </div>
+
                     <input className='btn btn-accent w-full my-3' value='SignUp' type="submit" />
                     <div>
                         {signUpError && <p className='text-red-600'>{signUpError}</p>}

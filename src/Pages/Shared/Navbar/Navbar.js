@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 import './Navbar.css';
-// import logo from '../../../assets/logo/furniture-logo.png'
+import logo from '../../../assets/logo/images.png'
 
 const Nabvar = () => {
     const { user, logOut } = useContext(AuthContext);
@@ -28,7 +28,7 @@ const Nabvar = () => {
 
     </React.Fragment>
     return (
-        <nav className='mb-4'>
+        <nav className='mb-4 bg-black text-blue-400 p-2'>
             <div className="navbar ">
                 <div className="navbar-start">
                     <div className="dropdown">
@@ -39,7 +39,10 @@ const Nabvar = () => {
                             {menuItems}
                         </ul>
                     </div>
-                    <Link className="normal-case lg:text-2xl navbar-title p-0">Decency Fur ReSale</Link>
+                    <div className='flex lg:block'>
+                        <img className='h-20 w-28 p-0' src={logo} alt="" />
+                        <Link className="normal-case lg:text-2xl navbar-title text-xl p-0">Decency Fur ReSale</Link>
+                    </div>
                 </div>
                 <div className="navbar-end hidden lg:flex">
                     <ul className="menu menu-horizontal p-0 rounded-lg">
