@@ -10,11 +10,11 @@ const Nabvar = () => {
 
         </li>
         <li><Link to="/blog">Blogs</Link></li>
-        
+
     </React.Fragment>
     return (
-        <section>
-            <div className="navbar bg-base-100">
+        <nav className='mb-4'>
+            <div className="navbar ">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -26,17 +26,14 @@ const Nabvar = () => {
                     </div>
                     <Link className="normal-case lg:text-2xl navbar-title p-0">Decency Fur ReSale</Link>
                 </div>
-                <div className="navbar-end rounded-lg hidden lg:flex">
-                    <ul className="menu menu-horizontal p-0">
-                        <li tabIndex={3}>
-                            {menuItems}
-                        </li>
-
+                <div className="navbar-end hidden lg:flex">
+                    <ul className="menu menu-horizontal p-0 rounded-lg">
+                        {menuItems}
                     </ul>
                 </div>
 
             </div>
-        </section>
+        </nav>
     );
 };
 
