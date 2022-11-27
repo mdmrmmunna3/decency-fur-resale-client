@@ -44,8 +44,11 @@ const SignUp = () => {
             //     backgroundSize: 'cover',
             //     backgroundRepeat: 'no-repeat',
             // }}
+            style={{
+                backgroundColor: 'rgb(31 41 55)'
+            }}
             className='h-[800px] flex justify-center items-center'>
-            <div className='w-96 p-7'>
+            <div className='w-96 p-7 bg-white rounded-lg'>
                 <h2 className='text-2xl font-bold text-center'>Sign Up</h2>
                 <form onSubmit={handleSubmit(handleSignUp)}>
 
@@ -91,8 +94,8 @@ const SignUp = () => {
                     </div>
 
                     {/* check option  */}
-                    <div className='mt-2'>
-                        <div className='flex items-center'>
+                    <div className='mt-2 flex'>
+                        <div className='flex items-center mr-4'>
                             <input type="radio"
                                 {...register("radio", {
                                     required: 'radio is required'
@@ -101,7 +104,7 @@ const SignUp = () => {
                                 name="radio-7" className="radio radio-info" />
                             <label >Buyer</label>
                         </div>
-                        <br />
+                        
                         <div className='flex items-center'>
                             <input type="radio"
                                 {...register("radio", {

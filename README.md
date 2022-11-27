@@ -9,6 +9,12 @@ In the project directory, you can run:
 ### Project-Desciption:
 
 * this porject build in resale furniture website , use sale used furniture for second hands product.
+* this project important route are protected by private route .
+* here are  3 types of user . 1.As Admin, 2. Seller and 3. Buyer
+* Admin can take all access. Admin can delete a user and even create an admin 
+* apply to dynamic route 
+*  Buyers will see my orders, Seller will see Add a Product and My Product.
+* add a some important blog of questions.
 
 ### `npm start`
 

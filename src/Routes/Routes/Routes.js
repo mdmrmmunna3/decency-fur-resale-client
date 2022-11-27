@@ -1,5 +1,6 @@
 import Main from "../../Layouts/Main";
 import Blog from "../../Pages/Blog/Blog";
+import Categories from "../../Pages/Categories/Categories";
 import Home from "../../Pages/Home/Home/Home";
 import Login from "../../Pages/Login/Login";
 import SignUp from "../../Pages/SignUp/SignUp";
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
             {
                 path: '/home',
                 element: <Home></Home>
+            },
+            {
+                path:'/categories',
+                element:<Categories></Categories>
             },
             {
                 path: '/blog',

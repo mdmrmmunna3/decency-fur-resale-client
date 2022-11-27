@@ -5,7 +5,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 const Login = () => {
-    const { logIn } = useContext(AuthContext);
+    const { logIn , googleSignUp} = useContext(AuthContext);
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [loginError, setLoginError] = useState('');
 
@@ -29,9 +29,23 @@ const Login = () => {
             })
     }
 
+    // handlelogin WITH Google
+    const handleLoginGoogle = () => {
+        googleSignUp()
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                toast.success('Login Successfully');
+            })
+            .catch(err => console.error(err));
+    }
     return (
-        <section className='h-[800px] flex justify-center items-center'>
-            <div className='w-96 p-7'>
+        <section
+            style={{
+                backgroundColor: 'rgb(31 41 55)'
+            }}
+            className='h-[800px] flex justify-center items-center'>
+            <div className='w-96 p-7 bg-white rounded-lg'>
                 <h2 className='text-2xl font-bold text-center'>Login</h2>
                 <form onSubmit={handleSubmit(handleLogIn)}>
 
@@ -73,9 +87,10 @@ const Login = () => {
                 <p>New to Doctors Portal? <Link className='text-secondary' to='/signup'>Create New Account</Link> </p>
                 <div>
                     <div className="divider">OR</div>
-                    <button className='btn btn-outline w-full'>CONTINUE WITH GOOGLE</button>
+                    <button onClick={handleLoginGoogle} className='btn btn-outline w-full'>CONTINUE WITH GOOGLE</button>
                 </div>
             </div>
+
         </section>
     );
 };

@@ -2,7 +2,7 @@ import React from 'react';
 import { FaStar } from 'react-icons/fa';
 
 const Review = ({ reviews }) => {
-    console.log(reviews)
+    // console.log(reviews)
     const { review, img, name, address } = reviews;
     return (
         <div className="max-w-md p-6 overflow-hidden rounded-lg shadow-xl dark:bg-gray-900 dark:text-gray-100 ">
