@@ -15,7 +15,7 @@ const Categories = () => {
     });
 
     if(isLoading) {
-        <Loading></Loading>
+       return <Loading></Loading>
     }
 
     return (

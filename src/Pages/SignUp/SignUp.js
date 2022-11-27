@@ -6,7 +6,7 @@ import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 // import bgImg from '../../assets/bg-img/signup.jpg'
 
 const SignUp = () => {
-    const { googleSignUp, createUser } = useContext(AuthContext);
+    const { googleSignUp, createUser, updateUser } = useContext(AuthContext);
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [signUpError, setSignUpError] = useState('');
 
@@ -29,6 +29,7 @@ const SignUp = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
+
                 toast.success('User Create Successfully');
             })
             .catch(err => {
@@ -36,6 +37,11 @@ const SignUp = () => {
                 setSignUpError(err.message);
             });
     }
+
+    // handle update user
+    // const updateUserProfile = () => {
+    //     updateUser()
+    // } 
 
     return (
         <section
@@ -93,6 +99,19 @@ const SignUp = () => {
                         {errors.password && <p className='text-red-600'>{errors.password?.message}</p>}
                     </div>
 
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text font-bold">Photo</span>
+                        </label>
+                        <input type="file"
+                            {...register("image", {
+                                required: 'Photo is required'
+                            })
+                            }
+                            placeholder="Name" className="input input-bordered text-accent" required />
+                        {errors.img && <p className='text-red-600'>{errors.img?.message}</p>}
+                    </div>
+
                     {/* check option  */}
                     <div className='mt-2 flex'>
                         <div className='flex items-center mr-4'>
@@ -104,7 +123,7 @@ const SignUp = () => {
                                 name="radio-7" className="radio radio-info" />
                             <label >Buyer</label>
                         </div>
-                        
+
                         <div className='flex items-center'>
                             <input type="radio"
                                 {...register("radio", {

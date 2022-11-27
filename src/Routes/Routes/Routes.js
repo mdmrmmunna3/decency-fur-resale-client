@@ -1,6 +1,7 @@
 import Main from "../../Layouts/Main";
 import Blog from "../../Pages/Blog/Blog";
 import Categories from "../../Pages/Categories/Categories";
+import CategoryProducts from "../../Pages/Categories/CategoryProducts/CategoryProducts";
 import Home from "../../Pages/Home/Home/Home";
 import Login from "../../Pages/Login/Login";
 import SignUp from "../../Pages/SignUp/SignUp";
@@ -9,7 +10,7 @@ const { createBrowserRouter } = require("react-router-dom");
 
 const router = createBrowserRouter([
     {
-        path: '/', 
+        path: '/',
         element: <Main></Main>,
         children: [
             {
@@ -21,8 +22,12 @@ const router = createBrowserRouter([
                 element: <Home></Home>
             },
             {
-                path:'/categories',
-                element:<Categories></Categories>
+                path: '/categories',
+                element: <Categories></Categories>
+            },
+            {
+                path:'/category-product/:brand',
+                element: <CategoryProducts></CategoryProducts>
             },
             {
                 path: '/blog',
@@ -37,7 +42,8 @@ const router = createBrowserRouter([
                 element: <SignUp></SignUp>
             }
         ]
-    }
+    },
+    
 ])
 
-export default router ;
+export default router;
