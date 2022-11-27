@@ -11,7 +11,7 @@ const CategoriesOption = ({ categoriesOption }) => {
                 <div className="card-body">
                     <h2 className="card-title navbar-title text-xl text-blue-400">Brand : {category_name}</h2>
                     <div className="w-full">
-                        <PrimaryButton>Show Product</PrimaryButton>
+                        <PrimaryButton>Show Products</PrimaryButton>
                     </div>
                 </div>
             </div>
