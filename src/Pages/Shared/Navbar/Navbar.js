@@ -27,7 +27,7 @@ const Nabvar = () => {
             </>
             :
             <li><Link to="/login">Login</Link></li>}
-        <li><FaUserCircle></FaUserCircle></li>
+        <li className='text-white'><FaUserCircle></FaUserCircle></li>
     </React.Fragment>
     return (
         <nav className='mb-1 bg-black text-blue-400 p-2'>
