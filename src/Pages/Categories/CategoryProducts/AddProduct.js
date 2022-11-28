@@ -68,8 +68,8 @@ const AddProduct = () => {
 
 
     return (
-        <div>
-            <h3>Add Products</h3>
+        <div className='text-center my-8'>
+            <h3 className='text-3xl mb-3 navbar-title'>Add Products</h3>
             <label htmlFor="add-product" className="btn btn-primary">Add Product</label>
             <input type="checkbox" id="add-product" className="modal-toggle" />
             <div className="modal">

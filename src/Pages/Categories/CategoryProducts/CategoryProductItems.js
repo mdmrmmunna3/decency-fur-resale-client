@@ -26,8 +26,8 @@ const CategoryProductItems = ({ product }) => {
                     <img alt="" src={sellerImg} className="object-cover w-12 h-12 rounded-full shadow dark:bg-gray-500" />
                     <div className="flex flex-col space-y-1">
                         <h3>{sellerName}</h3>
-                        <span className="text-xs dark:text-gray-400">{location}</span>
-                        <span className="text-xs dark:text-gray-400">{phone}</span>
+                        <span className="text-xs dark:text-gray-400">location:{location}</span>
+                        <span className="text-xs dark:text-gray-400">phone:{phone}</span>
                     </div>
                 </div>
                 <div>
