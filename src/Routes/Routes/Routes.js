@@ -1,10 +1,13 @@
+import DashboardLayout from "../../Layouts/DashboardLayout";
 import Main from "../../Layouts/Main";
 import Blog from "../../Pages/Blog/Blog";
 import Categories from "../../Pages/Categories/Categories";
 import CategoryProducts from "../../Pages/Categories/CategoryProducts/CategoryProducts";
+import AllSeller from "../../Pages/Dashboard/AllSeller/AllSeller";
 import Home from "../../Pages/Home/Home/Home";
 import Login from "../../Pages/Login/Login";
 import SignUp from "../../Pages/SignUp/SignUp";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 const { createBrowserRouter } = require("react-router-dom");
 
@@ -27,7 +30,7 @@ const router = createBrowserRouter([
             },
             {
                 path:'/category-product/:brand',
-                element: <CategoryProducts></CategoryProducts>
+                element: <PrivateRoute><CategoryProducts></CategoryProducts></PrivateRoute>
             },
             {
                 path: '/blog',
@@ -43,6 +46,16 @@ const router = createBrowserRouter([
             }
         ]
     },
+    {
+        path: '/dashboard',
+        element: <DashboardLayout></DashboardLayout>,
+        children: [
+            {
+                path:'/dashboard/allseller',
+                element: <AllSeller></AllSeller>
+            }
+        ]
+    }
     
 ])
 

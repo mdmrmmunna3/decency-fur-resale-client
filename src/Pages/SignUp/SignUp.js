@@ -6,9 +6,10 @@ import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 // import bgImg from '../../assets/bg-img/signup.jpg'
 
 const SignUp = () => {
-    const { googleSignUp, createUser, updateUser } = useContext(AuthContext);
+    const { googleSignUp, createUser, updateUser, setLoading } = useContext(AuthContext);
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [signUpError, setSignUpError] = useState('');
+    const [photoURL, setPhotoURL] = useState();
 
     // handleSignup WITH Google
     const handleSignUpGoogle = () => {
@@ -21,15 +22,43 @@ const SignUp = () => {
             .catch(err => console.error(err));
     }
 
+    const imgHostKey = process.env.REACT_APP_imgbb_key;
     // handleSignUp with email and password
     const handleSignUp = data => {
+        const name = data.name
+        const image = data.image[0]
+        const fromData = new FormData()
+        fromData.append('image', image)
+        const url = `https://api.imgbb.com/1/upload?key=${imgHostKey}`
+        console.log(url)
+        fetch(url, {
+            method: 'POST',
+            body: fromData
+        })
+            .then(res => res.json())
+            .then(imgData => {
+                console.log(imgData.data.url)
+                setPhotoURL(imgData.data.url)
+            }
+            )
+        console.log(photoURL)
+        const handleUpdateUserProfile = (name, photoURL) => {
+            setLoading(true)
+            const profile = {
+                displayName: name,
+                photoURL: photoURL
+            }
+            updateUser(profile)
+                .then({})
+                .catch(error => console.error(error))
+        }
         setSignUpError('');
         console.log(data)
         createUser(data.email, data.password)
             .then(result => {
                 const user = result.user;
                 console.log(user);
-
+                handleUpdateUserProfile(name, photoURL)
                 toast.success('User Create Successfully');
             })
             .catch(err => {
@@ -37,11 +66,6 @@ const SignUp = () => {
                 setSignUpError(err.message);
             });
     }
-
-    // handle update user
-    // const updateUserProfile = () => {
-    //     updateUser()
-    // } 
 
     return (
         <section

@@ -12,10 +12,10 @@ const Footer = () => {
                     <div className="flex flex-col space-y-4">
                         <h2 className="font-medium text-xl">Categories</h2>
                         <div className="flex flex-col space-y-2 text-sm dark:text-gray-400">
-                            <Link to="/">BedRoom</Link>
-                            <Link to="/">Kitchen</Link>
-                            <Link to="/">DrawingRoom</Link>
-                            <Link to="/">Using with Preprocessors</Link>
+                            <Link to="/">BMW</Link>
+                            <Link to="/">Tesla</Link>
+                            <Link to="/">Roll-Royals</Link>
+                            <Link to="/">Toyota</Link>
                         </div>
                     </div>
                     <div className="flex flex-col space-y-4">
