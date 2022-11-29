@@ -1,5 +1,5 @@
 import React from 'react';
-import BookingModal from '../BookingModal/BookingModal';
+import { Link } from 'react-router-dom';
 
 const CategoryProductItems = ({ product }) => {
     const {
@@ -11,14 +11,17 @@ const CategoryProductItems = ({ product }) => {
         orginal_price,
         post_date,
         resale_price,
-        
         year_of_purchase,
         year_of_use,
         condition,
         phone,
         sellerName,
         sellerImg,
+        _id
     } = product;
+
+    
+
     return (
         <div>
             <div className="flex flex-col  p-6 space-y-6 overflow-hidden rounded-lg shadow-md dark:bg-gray-900 dark:text-gray-100">
@@ -49,9 +52,7 @@ const CategoryProductItems = ({ product }) => {
                         <p className="mb-1 text-xl font-semibold">condition: {condition}</p>
                     </div>
                 </div>
-                <div className="flex flex-wrap justify-between">
-                    <BookingModal></BookingModal>
-                </div>
+                <label  className="btn btn-primary"><Link to={`/bookingProduct/${brand}/${_id}`}>Book Now</Link></label>
             </div>
 
         </div>

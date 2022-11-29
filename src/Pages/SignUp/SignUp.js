@@ -1,15 +1,16 @@
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
+import { FcGoogle } from "react-icons/fc";
 // import bgImg from '../../assets/bg-img/signup.jpg'
 
 const SignUp = () => {
-    const { googleSignUp, createUser, updateUser, setLoading } = useContext(AuthContext);
+    const { googleSignUp, createUser, updateUser } = useContext(AuthContext);
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [signUpError, setSignUpError] = useState('');
-    const [photoURL, setPhotoURL] = useState();
+    const navigate = useNavigate();
 
     // handleSignup WITH Google
     const handleSignUpGoogle = () => {
@@ -36,7 +37,7 @@ const SignUp = () => {
         })
             .then(res => res.json())
             .then(ImageData => {
-                console.log(ImageData.data.url)
+                
                 setSignUpError('');
                 createUser(data.email, data.password)
                     .then(result => {
@@ -46,6 +47,7 @@ const SignUp = () => {
                             .then()
                             .catch(err => console.error(err))
                         toast.success('User Create Successfully');
+                        navigate('/')
                     })
                     .catch(err => {
                         console.error(err.message);
@@ -125,7 +127,7 @@ const SignUp = () => {
                     </div>
 
                     {/* check option  */}
-                    <div className='mt-2 flex'>
+                    {/* <div className='mt-2 flex'>
                         <div className='flex items-center mr-4'>
                             <input type="radio"
                                 {...register("radio", {
@@ -144,8 +146,14 @@ const SignUp = () => {
                                 }
                                 name="radio-7" className="radio radio-info" />
                             <label>Seller</label>
+                           
                         </div>
-                    </div>
+                    </div> */}
+
+                    <select className="select select-bordered w-full  " required>
+                        <option>Buyer</option>
+                        <option>Seller</option>
+                    </select>
 
                     <input className='btn btn-accent w-full my-3' value='SignUp' type="submit" />
                     <div>
@@ -155,7 +163,7 @@ const SignUp = () => {
                 <p>Already have an account?<Link className='text-secondary' to='/login'>Please Login</Link> </p>
                 <div>
                     <div className="divider">OR</div>
-                    <button onClick={handleSignUpGoogle} className='btn btn-outline w-full'>CONTINUE WITH GOOGLE</button>
+                    <button onClick={handleSignUpGoogle} className='btn btn-outline w-full'><FcGoogle className='text-2xl mr-2'></FcGoogle> CONTINUE WITH GOOGLE</button>
                 </div>
             </div>
         </section>

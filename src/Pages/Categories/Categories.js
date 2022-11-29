@@ -5,7 +5,7 @@ import Loading from '../Shared/Loading/Loading';
 
 const Categories = () => {
 
-    const { data: categories = [], isLoading} = useQuery({
+    const { data: categories = [], isLoading, refetch} = useQuery({
         queryKey: ['categories',],
         queryFn: async () => {
             const res = await fetch('http://localhost:5000/categories')

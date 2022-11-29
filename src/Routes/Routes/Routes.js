@@ -1,6 +1,7 @@
 import DashboardLayout from "../../Layouts/DashboardLayout";
 import Main from "../../Layouts/Main";
 import Blog from "../../Pages/Blog/Blog";
+import BookingModal from "../../Pages/Categories/BookingModal/BookingModal";
 import Categories from "../../Pages/Categories/Categories";
 import AddProduct from "../../Pages/Categories/CategoryProducts/AddProduct";
 import CategoryProducts from "../../Pages/Categories/CategoryProducts/CategoryProducts";
@@ -48,6 +49,11 @@ const router = createBrowserRouter([
             {
                 path: '/categories/:brand',
                 element: <AddProduct></AddProduct>
+            },
+            {
+                path: '/bookingProduct/:brand/:id',
+                element: <BookingModal></BookingModal>,
+                loader: ({params}) => fetch(`http://localhost:5000/products/${params.id}`) 
             }
         ]
     },

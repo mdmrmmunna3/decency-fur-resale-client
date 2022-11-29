@@ -23,7 +23,9 @@ const CategoryProducts = () => {
                 {
                     products.map(product => <CategoryProductItems key={product._id} product={product}></CategoryProductItems>)
                 }
+                  
             </div>
+            
             <AddProduct></AddProduct>
         </div>
     );
