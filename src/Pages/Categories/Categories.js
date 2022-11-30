@@ -2,7 +2,6 @@ import React from 'react';
 import { useQuery, } from '@tanstack/react-query'
 import CategoriesOption from './CategoriesOption';
 import Loading from '../Shared/Loading/Loading';
-import AddProduct from './CategoryProducts/AddProduct';
 
 const Categories = () => {
 

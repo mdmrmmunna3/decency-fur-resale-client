@@ -127,28 +127,6 @@ const SignUp = () => {
                     </div>
 
                     {/* check option  */}
-                    {/* <div className='mt-2 flex'>
-                        <div className='flex items-center mr-4'>
-                            <input type="radio"
-                                {...register("radio", {
-                                    required: 'radio is required'
-                                })
-                                }
-                                name="radio-7" className="radio radio-info" />
-                            <label >Buyer</label>
-                        </div>
-
-                        <div className='flex items-center'>
-                            <input type="radio"
-                                {...register("radio", {
-                                    required: 'radio is required'
-                                })
-                                }
-                                name="radio-7" className="radio radio-info" />
-                            <label>Seller</label>
-                           
-                        </div>
-                    </div> */}
 
                     <select className="select select-bordered w-full  " required>
                         <option>Buyer</option>
