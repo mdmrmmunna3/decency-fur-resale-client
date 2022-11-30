@@ -12,7 +12,7 @@ const CategoriesOption = ({ categoriesOption }) => {
                 <div className="card-body">
                     <h2 className="card-title navbar-title text-xl text-blue-400">Brand : {category_name}</h2>
                     <div className="w-full">
-                        <PrimaryButton><Link to={`/category-product/${category_name}`}>Show Products</Link> </PrimaryButton>
+                        <PrimaryButton><Link to={`/category-product/${category_name}`} >Show Products</Link> </PrimaryButton>
                     </div>
                 </div>
             </div>

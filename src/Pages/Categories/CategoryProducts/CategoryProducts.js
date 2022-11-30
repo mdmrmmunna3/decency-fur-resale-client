@@ -21,7 +21,7 @@ const CategoryProducts = () => {
             {/* <h1>{products.length}</h1> */}
             <div className='grid lg:grid-cols-2 grid-cols-1 gap-6'>
                 {
-                    products.map(product => <CategoryProductItems key={product._id} product={product}></CategoryProductItems>)
+                    products.map(product => <CategoryProductItems key={product._id} product={product} ></CategoryProductItems>)
                 }
                   
             </div>

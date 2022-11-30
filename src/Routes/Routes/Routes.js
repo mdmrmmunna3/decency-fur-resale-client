@@ -5,6 +5,7 @@ import BookingModal from "../../Pages/Categories/BookingModal/BookingModal";
 import Categories from "../../Pages/Categories/Categories";
 import AddProduct from "../../Pages/Categories/CategoryProducts/AddProduct";
 import CategoryProducts from "../../Pages/Categories/CategoryProducts/CategoryProducts";
+import AllBuyers from "../../Pages/Dashboard/AllBuyers/AllBuyers";
 import AllSeller from "../../Pages/Dashboard/AllSeller/AllSeller";
 import Home from "../../Pages/Home/Home/Home";
 import Login from "../../Pages/Login/Login";
@@ -62,9 +63,13 @@ const router = createBrowserRouter([
         element: <DashboardLayout></DashboardLayout>,
         children: [
             {
-                path:'/dashboard/allseller',
+                path:'/dashboard/allsellers',
                 element: <AllSeller></AllSeller>
-            }
+            },
+            {
+                path:'/dashboard/allbuyers',
+                element: <AllBuyers></AllBuyers>
+            },
         ]
     }
     

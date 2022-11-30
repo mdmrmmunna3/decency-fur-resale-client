@@ -1,7 +1,15 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
 
-const CategoryProductItems = ({ product }) => {
+const ShowProductDetails = () => {
+    const {id} = useParams()
+    const [product, setProduct] = useState({})
+    
+    useEffect(() => {
+        fetch(`http://localhost:5000/products/${id}`)
+            .then(res => res.json())
+            .then(data => setProduct(data))
+    }, [id])
     const {
         brand,
         description,
@@ -17,7 +25,7 @@ const CategoryProductItems = ({ product }) => {
         phone,
         sellerName,
         sellerImg,
-        _id
+        
     } = product;
 
     
@@ -37,7 +45,7 @@ const CategoryProductItems = ({ product }) => {
                     <img src={image_url} alt="" className="object-cover w-full mb-4 h-60 sm:h-96 dark:bg-gray-500" />
                     <h2 className="mb-1 sm lg:text-xl font-semibold">Brand: {brand}</h2>
                     <h2 className="mb-1 sm lg:text-xl font-semibold">Product: {productName}</h2>
-                    <p className=" dark:text-gray-400"><span className='font-semibold text-xl'>Description:</span> {description.slice(0, 100)}...</p>
+                    <p className=" dark:text-gray-400"><span className='font-semibold text-xl'>Description:</span> {description}</p>
                     <div className='flex justify-between my-2'>
                         <p className="mb-1 sm lg:text-xl font-semibold">Orginal-Price: <span className='line-through text-red-400'>${orginal_price}</span></p>
                         <p className="mb-1 sm lg:text-xl font-semibold">Resale-Price: ${resale_price}</p>
@@ -52,7 +60,6 @@ const CategoryProductItems = ({ product }) => {
                         <p className="mb-1 sm lg:text-xl font-semibold">condition: {condition}</p>
                     </div>
                 </div>
-                <label  className="btn btn-primary"><Link to={`/bookingProduct/${brand}/${_id}`}>Product Details</Link></label>
                 
             </div>
 
@@ -60,4 +67,4 @@ const CategoryProductItems = ({ product }) => {
     );
 };
 
-export default CategoryProductItems;
+export default ShowProductDetails;
