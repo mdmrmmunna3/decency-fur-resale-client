@@ -8,10 +8,11 @@ import { FcGoogle } from "react-icons/fc";
 
 const SignUp = () => {
     const { googleSignUp, createUser, updateUser } = useContext(AuthContext);
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, handleSubmit, formState: { errors }, reset } = useForm();
     const [signUpError, setSignUpError] = useState('');
     const [createUserEmail, setCreateUserEmail] = useState('');
     const navigate = useNavigate();
+    const [role, setRole] = useState('buyer')
 
     // handleSignup WITH Google
     const handleSignUpGoogle = () => {
@@ -50,6 +51,7 @@ const SignUp = () => {
                             })
                             .catch(err => console.error(err))
                         toast.success('User Create Successfully');
+                        reset();
                         navigate('/')
                     })
                     .catch(err => {
@@ -62,7 +64,7 @@ const SignUp = () => {
 
     // create saved user info
     const saveUser = (name, email) => {
-        const user = { name, email };
+        const user = { name, email, role };
         fetch('http://localhost:5000/allusers', {
             method: 'POST',
             headers: {
@@ -73,7 +75,7 @@ const SignUp = () => {
             .then(res => res.json())
             .then(data => {
                 // getUserToken(email);
-                setCreateUserEmail(email)
+                setCreateUserEmail(email);
             })
             .catch(err => console.error(err));
     }
@@ -82,11 +84,6 @@ const SignUp = () => {
 
     return (
         <section
-            // style={{
-            //     backgroundImage: `url(${bgImg})`,
-            //     backgroundSize: 'cover',
-            //     backgroundRepeat: 'no-repeat',
-            // }}
             style={{
                 backgroundColor: 'rgb(31 41 55)'
             }}
@@ -108,7 +105,7 @@ const SignUp = () => {
                         {errors.name && <p className='text-red-600'>{errors.name?.message}</p>}
                     </div>
 
-                    <div className="form-control w-full max-w-xs">
+                    <div className="form-control w-full max-w-xs" required>
                         <label className="label">
                             <span className="label-text">Email</span>
                         </label>
@@ -117,7 +114,7 @@ const SignUp = () => {
                                 required: 'email is required'
                             })
                             }
-                            placeholder="email" className="input input-bordered w-full max-w-xs" />
+                            placeholder="email" className="input input-bordered w-full max-w-xs"/>
                         {errors.email && <p className='text-red-600'>{errors.email?.message}</p>}
                     </div>
 
@@ -145,13 +142,13 @@ const SignUp = () => {
                                 required: 'Photo is required'
                             })
                             }
-                            placeholder="Name" className="input input-bordered text-accent" required />
+                            placeholder="Name" className="input input-bordered text-accent" />
                         {errors.img && <p className='text-red-600'>{errors.img?.message}</p>}
                     </div>
 
                     {/* check option  */}
 
-                    <select className="select select-bordered w-full  " required>
+                    <select value={role} onChange={e => setRole(e?.target?.value)} className="select select-bordered w-full  " required>
                         <option>Buyer</option>
                         <option>Seller</option>
                     </select>
