@@ -21,7 +21,7 @@ const ShowMyProduct = ({ showProduct }) => {
                                 <img src={showProduct?.image_url} alt="" className="object-cover w-full mb-4 h-60 sm:h-96 dark:bg-gray-500" />
                                 <h2 className="mb-1 sm lg:text-xl font-semibold">Brand: {showProduct?.brand}</h2>
                                 <h2 className="mb-1 sm lg:text-xl font-semibold">Product: {showProduct?.productName}</h2>
-                                <p className=" dark:text-gray-400"><span className='font-semibold text-xl'>Description:</span> {showProduct?.description.slice(0, 100)}...</p>
+                                <p className=" dark:text-gray-400"><span className='font-semibold text-xl'>Description:</span> {showProduct?.description}...</p>
                                 <div className='flex justify-between my-2'>
                                     <p className="mb-1 sm lg:text-xl font-semibold">Orginal-Price: <span className='line-through text-red-400'>${showProduct?.orginal_price}</span></p>
                                     <p className="mb-1 sm lg:text-xl font-semibold">Resale-Price: ${showProduct?.resale_price}</p>

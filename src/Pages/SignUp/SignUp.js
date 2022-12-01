@@ -10,6 +10,7 @@ const SignUp = () => {
     const { googleSignUp, createUser, updateUser } = useContext(AuthContext);
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [signUpError, setSignUpError] = useState('');
+    const [createUserEmail, setCreateUserEmail] = useState('');
     const navigate = useNavigate();
 
     // handleSignup WITH Google
@@ -37,14 +38,16 @@ const SignUp = () => {
         })
             .then(res => res.json())
             .then(ImageData => {
-                
+
                 setSignUpError('');
                 createUser(data.email, data.password)
                     .then(result => {
                         const user = result.user;
                         console.log(user);
                         updateUser(name, ImageData.data.url)
-                            .then()
+                            .then(() => {
+                                saveUser(data.name, data.email)
+                            })
                             .catch(err => console.error(err))
                         toast.success('User Create Successfully');
                         navigate('/')
@@ -56,6 +59,26 @@ const SignUp = () => {
             })
 
     }
+
+    // create saved user info
+    const saveUser = (name, email) => {
+        const user = { name, email };
+        fetch('http://localhost:5000/allusers', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json',
+            },
+            body: JSON.stringify(user)
+        })
+            .then(res => res.json())
+            .then(data => {
+                // getUserToken(email);
+                setCreateUserEmail(email)
+            })
+            .catch(err => console.error(err));
+    }
+
+
 
     return (
         <section

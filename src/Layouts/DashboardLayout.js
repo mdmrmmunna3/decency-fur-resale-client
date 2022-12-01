@@ -8,7 +8,6 @@ const DashboardLayout = () => {
         <section>
 
             <Nabvar></Nabvar>
-
             <div className="drawer drawer-mobile">
                 <input id="dashboard-drawer" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content">
