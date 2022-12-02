@@ -8,10 +8,12 @@ import CategoryProducts from "../../Pages/Categories/CategoryProducts/CategoryPr
 import AllBuyers from "../../Pages/Dashboard/AllBuyers/AllBuyers";
 import AllSeller from "../../Pages/Dashboard/AllSeller/AllSeller";
 import AllUsers from "../../Pages/Dashboard/AllUsers/AllUsers";
+import Buyers from "../../Pages/Dashboard/Buyers/Buyers";
 import AddNewProduct from "../../Pages/Dashboard/Sellers/AddNewProduct";
 import Sellers from "../../Pages/Dashboard/Sellers/Sellers";
 import Home from "../../Pages/Home/Home/Home";
 import Login from "../../Pages/Login/Login";
+import ErrorPage from "../../Pages/Shared/ErrorPage/ErrorPage";
 import SignUp from "../../Pages/SignUp/SignUp";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
@@ -85,7 +87,15 @@ const router = createBrowserRouter([
                 path:'/dashboard/seller/addproduct',
                 element: <AddNewProduct></AddNewProduct>
             },
+            {
+                path:'/dashboard/buyer/myorders',
+                element: <Buyers></Buyers>
+            },
         ]
+    },
+    {
+        path: '*',
+        element: <ErrorPage></ErrorPage>
     }
     
 ])

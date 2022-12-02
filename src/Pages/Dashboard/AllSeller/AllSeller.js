@@ -30,7 +30,7 @@ const AllSeller = () => {
 
     return (
         <section>
-            <h2 className='text-center text-2xl lg:text-3xl navbar-title my-8'>My Products</h2>
+            <h2 className='text-center text-2xl lg:text-3xl navbar-title my-8'>All Seller Products</h2>
             {
                 <div className='grid lg:grid-cols-2 grid-cols-1 gap-5'>
                     {

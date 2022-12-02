@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 import Loading from '../../Shared/Loading/Loading';
-import ShowMyProduct from '../AllSeller/ShowMyProduct/ShowMyProduct';
+
 
 
 const Sellers = () => {
@@ -13,9 +13,7 @@ const Sellers = () => {
         queryKey: ['showProducts', user?.email],
         queryFn: async () => {
             const res = await fetch(url, {
-                // headers: {
-                //     authorization: `bearer ${localStorage.getItem('accessToken')}`
-                // }
+                
             });
             const data = await res.json();
             return data;
@@ -33,7 +31,7 @@ const Sellers = () => {
             {
                 <div className='grid lg:grid-cols-2 grid-cols-1 gap-5'>
                     {
-                        showProducts.map(showProduct => <div key={showProduct._id} showProduct={showProduct}>
+                        showProducts.map(showProduct => <div key={showProduct?._id}>
                             {
                                 user?.email === showProduct?.sellerEmail &&
                                 <>

@@ -12,7 +12,7 @@ const SignUp = () => {
     const [signUpError, setSignUpError] = useState('');
     const [createUserEmail, setCreateUserEmail] = useState('');
     const navigate = useNavigate();
-    const [role, setRole] = useState('buyer')
+    const [role, setRole] = useState('Buyer')
 
     // handleSignup WITH Google
     const handleSignUpGoogle = () => {
