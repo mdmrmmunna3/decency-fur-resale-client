@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, Outlet } from 'react-router-dom';
+import { AuthContext } from '../contexts/AuthProvider/AuthProvider';
 import Footer from '../Pages/Shared/Footer/Footer';
 import Nabvar from '../Pages/Shared/Navbar/Navbar';
 
 const DashboardLayout = () => {
+    const { userRoleInfo } = useContext(AuthContext);
     return (
         <section>
 
@@ -16,17 +18,23 @@ const DashboardLayout = () => {
                 <div className="drawer-side">
                     <label htmlFor="dashboard-drawer" className="drawer-overlay"></label>
                     <ul className="menu p-4 w-80 text-base-content">
-
-                        <li><Link to='/dashboard/allusers'>AllUsers</Link></li>
-                        <li><Link to='/dashboard/allsellers'>AllSellers</Link></li>
-                        <li><Link to='/dashboard/allbuyers'>AllBuyers</Link></li>
-                        {/* {
-                            isAdmin && <>
-                                <li><Link to='/dashboard/allusers'>All Users</Link></li>
-                                <li><Link to='/dashboard/adddoctor'>Add A Doctor</Link></li>
-                                <li><Link to='/dashboard/ManageDoctors'>Manage Doctors</Link></li>
+                        {userRoleInfo?.role === "admin" &&
+                            <>
+                                <li><Link to='/dashboard/allusers'>AllUsers</Link></li>
+                                <li><Link to='/dashboard/allsellers'>AllSellers</Link></li>
+                                <li><Link to='/dashboard/allbuyers'>AllBuyers</Link></li>
                             </>
-                        } */}
+                        }
+
+                        {   userRoleInfo?.role === "Seller" &&
+                            <>
+                                <li><Link to='/dashboard/seller/myproduct'>My Product</Link></li>
+                                <li><Link to='/dashboard/seller/addproduct'>Add product</Link></li>
+                                
+                            </>
+                        }
+                        
+                       
                     </ul>
                 </div>
             </div>

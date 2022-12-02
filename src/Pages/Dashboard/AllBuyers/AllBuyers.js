@@ -50,27 +50,23 @@ const AllBuyers = () => {
                         {
                             bookings?.map((booking, i) => <tr key={booking?._id}>
 
-                                {
-                                    user?.email === booking.buyerEmail &&
-                                    <>
-                                        <th>{i + 1}</th>
-                                        <td>{booking?.buyerName}</td>
-                                        <td><img className="mask mask-squircle w-12 h-12" src={booking?.productImg} alt="" /></td>
-                                        <td>{booking?.productName}</td>
-                                        <td>{booking?.price}</td>
-                                        <td>
-                                            {
-                                                booking.price && !booking.paid && <Link to={`/dashboard/payment/${booking._id}`}>
-                                                    <button className='btn btn-primary btn-sm'>Pay</button>
-                                                </Link>
-                                            }
-                                            {
-                                                booking.price && booking.paid && <span className='text-green-400'>Paid</span>
-                                            }
-                                        </td>
-                                    </>
-
-                                }
+                                <>
+                                    <th>{i + 1}</th>
+                                    <td>{booking?.buyerName}</td>
+                                    <td><img className="mask mask-squircle w-12 h-12" src={booking?.productImg} alt="" /></td>
+                                    <td>{booking?.productName}</td>
+                                    <td>{booking?.price}</td>
+                                    <td>
+                                        {
+                                            booking.price && !booking.paid && <Link to={`/dashboard/payment/${booking._id}`}>
+                                                <button className='btn btn-primary btn-sm'>Pay</button>
+                                            </Link>
+                                        }
+                                        {
+                                            booking.price && booking.paid && <span className='text-green-400'>Paid</span>
+                                        }
+                                    </td>
+                                </>
 
                             </tr>
                             )

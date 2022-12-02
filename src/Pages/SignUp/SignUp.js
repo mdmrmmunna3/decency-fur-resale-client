@@ -20,6 +20,7 @@ const SignUp = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
+                saveUser(user?.displayName, user?.email)
                 toast.success('SignUp Successfully');
             })
             .catch(err => console.error(err));
@@ -161,7 +162,7 @@ const SignUp = () => {
                 <p>Already have an account?<Link className='text-secondary' to='/login'>Please Login</Link> </p>
                 <div>
                     <div className="divider">OR</div>
-                    <button onClick={handleSignUpGoogle} className='btn btn-outline w-full'><FcGoogle className='text-2xl mr-2'></FcGoogle> CONTINUE WITH GOOGLE</button>
+                    <button  onClick={handleSignUpGoogle} className='btn btn-outline w-full'><FcGoogle className='text-2xl mr-2'></FcGoogle> CONTINUE WITH GOOGLE</button>
                 </div>
             </div>
         </section>

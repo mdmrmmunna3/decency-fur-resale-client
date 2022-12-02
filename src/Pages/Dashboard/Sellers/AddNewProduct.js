@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
-import { useParams } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 
-const AddProduct = () => {
-    const brand = useParams();
-    const { user , setLoading} = useContext(AuthContext);
+const AddNewProduct = () => {
+
+    const { user } = useContext(AuthContext);
+    
 
     const handleAddProduct = event => {
         event.preventDefault();
@@ -62,19 +62,15 @@ const AddProduct = () => {
                 if (data.acknowledged) {
 
                     toast.success('Add new Product successfully')
-                    setLoading(true)
+                
                     form.reset();
                 }
             })
             .catch(err => console.error(err))
-            .finally(() => {
-                 setLoading(false)
-            })
     }
-
-
     return (
-        <div className='text-center my-8'>
+        <div>
+                 <div className='text-center my-8'>
             <h3 className='text-3xl mb-3 navbar-title'>Add Products</h3>
             <label htmlFor="add-product" className="btn btn-primary"> Add Product</label>
             <input type="checkbox" id="add-product" className="modal-toggle" />
@@ -90,7 +86,12 @@ const AddProduct = () => {
 
                         <input name='photoURL' type="text" disabled defaultValue={user?.photoURL} placeholder="photoURL" className="input input-bordered w-full " required />
 
-                        <input name='brand' type="text" disabled defaultValue={brand?.brand} placeholder="brand" className="input input-bordered w-full " required  />
+                        <select name='brand' className="select select-bordered w-full  " required>
+                            <option>Toyota</option>
+                            <option>BMW</option>
+                            <option>Tesla</option>
+                            <option>Rolls-Royce</option>
+                        </select>
 
                         <input name='location' type="text" placeholder="location" className="input input-bordered w-full "  required/>
 
@@ -125,7 +126,8 @@ const AddProduct = () => {
                 </div>
             </div>
         </div>
+        </div>
     );
 };
 
-export default AddProduct;
+export default AddNewProduct;

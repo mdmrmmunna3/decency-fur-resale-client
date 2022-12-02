@@ -8,6 +8,16 @@ const auth = getAuth(app);
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [userRoleInfo, setUserRoleInfo] = useState({});
+
+    useEffect(()=> {
+        fetch(`http://localhost:5000/allusers/userInfo?email=${user?.email}`)
+        .then(res => res.json())
+        .then(data => {
+            setUserRoleInfo(data)
+        })
+    } ,[user?.email])
+
 
     // signup with googlepop 
     const googleProvider = new GoogleAuthProvider();
@@ -62,6 +72,7 @@ const AuthProvider = ({ children }) => {
         logOut,
         updateUser,
         setLoading,
+        userRoleInfo,
     }
 
     return (
