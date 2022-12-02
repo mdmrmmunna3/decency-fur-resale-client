@@ -29,7 +29,7 @@ const Sellers = () => {
         <section>
             <h2 className='text-center text-2xl lg:text-4xl navbar-title my-8'>My Products</h2>
             {
-                <div className='grid lg:grid-cols-2 grid-cols-1 gap-5'>
+                <div >
                     {
                         showProducts.map(showProduct => <div key={showProduct?._id}>
                             {

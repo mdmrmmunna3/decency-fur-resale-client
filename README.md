@@ -10,6 +10,13 @@ In the project directory, you can run:
 * email : mdmunnabhai@gmail.com
 * pass : MUNNA45@@
 
+## Project Name
+### `
+Decency Fur ReSale`
+
+# Firebase live site link 
+[Firebase live site link] (https://decency-fur-resale.web.app/)
+
 ### Project-Desciption:
 
 * this porject build in resale furniture website , use sale used furniture for second hands product.
