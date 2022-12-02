@@ -14,7 +14,7 @@ const BookingModal = () => {
     const [phone, setPhone] = useState('')
 
     useEffect(() => {
-        fetch(`http://localhost:5000/products/${id}`)
+        fetch(`https://decency-fur-resale-server.vercel.app/products/${id}`)
             .then(res => res.json())
             .then(data => setBookdata(data))
     }, [id])
@@ -42,7 +42,7 @@ const BookingModal = () => {
 
         console.log(bookedProduct);
 
-        fetch('http://localhost:5000/bookingOrders', {
+        fetch('https://decency-fur-resale-server.vercel.app/bookingOrders', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

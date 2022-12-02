@@ -11,7 +11,7 @@ const AuthProvider = ({ children }) => {
     const [userRoleInfo, setUserRoleInfo] = useState({});
 
     useEffect(()=> {
-        fetch(`http://localhost:5000/allusers/userInfo?email=${user?.email}`)
+        fetch(`https://decency-fur-resale-server.vercel.app/allusers/userInfo?email=${user?.email}`)
         .then(res => res.json())
         .then(data => {
             setUserRoleInfo(data)

@@ -50,7 +50,7 @@ const AddProduct = () => {
         console.log(addProduct);
 
         
-        fetch('http://localhost:5000/products', {
+        fetch('https://decency-fur-resale-server.vercel.app/products', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

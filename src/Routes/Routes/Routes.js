@@ -23,6 +23,7 @@ const router = createBrowserRouter([
     {
         path: '/',
         element: <Main></Main>,
+        errorElement: <ErrorPage></ErrorPage>,
         children: [
             {
                 path: '/',
@@ -59,13 +60,14 @@ const router = createBrowserRouter([
             {
                 path: '/bookingProduct/:brand/:id',
                 element: <BookingModal></BookingModal>,
-                loader: ({params}) => fetch(`http://localhost:5000/products/${params.id}`) 
+                loader: ({params}) => fetch(`https://decency-fur-resale-server.vercel.app/products/${params.id}`) 
             }
         ]
     },
     {
         path: '/dashboard',
         element: <DashboardLayout></DashboardLayout>,
+        errorElement: <ErrorPage></ErrorPage>,
         children: [
             {
                 path:'/dashboard/allusers',
@@ -93,10 +95,6 @@ const router = createBrowserRouter([
             },
         ]
     },
-    {
-        path: '*',
-        element: <ErrorPage></ErrorPage>
-    }
     
 ])
 

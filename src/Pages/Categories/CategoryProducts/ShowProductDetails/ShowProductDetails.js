@@ -6,7 +6,7 @@ const ShowProductDetails = () => {
     const [product, setProduct] = useState({})
     
     useEffect(() => {
-        fetch(`http://localhost:5000/products/${id}`)
+        fetch(`https://decency-fur-resale-server.vercel.app/products/${id}`)
             .then(res => res.json())
             .then(data => setProduct(data))
     }, [id])

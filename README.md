@@ -6,6 +6,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
+### admin email and password 
+* email : mdmunnabhai@gmail.com
+* pass : MUNNA45@@
+
 ### Project-Desciption:
 
 * this porject build in resale furniture website , use sale used furniture for second hands product.

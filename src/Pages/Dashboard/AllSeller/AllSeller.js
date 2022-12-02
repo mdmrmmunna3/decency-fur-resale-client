@@ -8,7 +8,7 @@ import ShowMyProduct from './ShowMyProduct/ShowMyProduct';
 const AllSeller = () => {
 
     const { user } = useContext(AuthContext);
-    const url = `http://localhost:5000/products?email=${user?.email}`
+    const url = `https://decency-fur-resale-server.vercel.app/products?email=${user?.email}`
     // console.log(url);
     const { data: showProducts = [], isLoading } = useQuery({
         queryKey: ['showProducts', user?.email],

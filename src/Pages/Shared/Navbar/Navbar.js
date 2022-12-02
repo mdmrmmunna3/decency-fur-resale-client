@@ -42,8 +42,8 @@ const Nabvar = () => {
                         </ul>
                     </div>
 
-                    <img className='h-20 w-28 p-0' src={logo} alt="" />
-                    <Link className="normal-case lg:text-2xl navbar-title text-xl p-0">Decency Fur ReSale</Link>
+                    <Link to="/"><img className='h-20 w-28 p-0' src={logo} alt="" /></Link>
+                    <Link to="/" className="normal-case lg:text-2xl navbar-title text-xl p-0">Decency Fur ReSale</Link>
 
                 </div>
                 <div className="navbar-end hidden lg:flex">
@@ -51,8 +51,8 @@ const Nabvar = () => {
                         {menuItems}
                     </ul>
                 </div>
-                 {/* sidevar menu  */}
-                 <label htmlFor="dashboard-drawer" tabIndex={2} className="btn btn-ghost lg:hidden">
+                {/* sidevar menu  */}
+                <label htmlFor="dashboard-drawer" tabIndex={2} className="btn btn-ghost lg:hidden">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                 </label>
             </div>

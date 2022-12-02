@@ -5,7 +5,7 @@
 //     const [isAdminLoading, setIsAdminLoading] = useState(true);
 //     useEffect(() => {
 //         if (email) {
-//             fetch(`http://localhost:5000/allusers/admin/${email}`)
+//             fetch(`https://decency-fur-resale-server.vercel.app/allusers/admin/${email}`)
 //                 .then(res => res.json())
 //                 .then(data => {
 //                     console.log(data);

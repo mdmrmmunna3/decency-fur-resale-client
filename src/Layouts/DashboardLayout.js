@@ -10,14 +10,14 @@ const DashboardLayout = () => {
         <section>
 
             <Nabvar></Nabvar>
-            <div className="drawer drawer-mobile">
+            <div className="drawer drawer-mobile ">
                 <input id="dashboard-drawer" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content">
                     <Outlet></Outlet>
                 </div>
                 <div className="drawer-side">
                     <label htmlFor="dashboard-drawer" className="drawer-overlay"></label>
-                    <ul className="menu p-4 w-80 text-base-content">
+                    <ul className="menu p-4 w-80 font-semibold text-blue-600">
                         {userRoleInfo?.role === "admin" &&
                             <>
                                 <li><Link to='/dashboard/allusers'>AllUsers</Link></li>
