@@ -6,7 +6,7 @@ import logo from '../../../assets/logo/images.png'
 import { FaUserCircle } from 'react-icons/fa';
 
 const Nabvar = () => {
-    const { user, logOut } = useContext(AuthContext);
+    const { user, logOut, userRoleInfo } = useContext(AuthContext);
 
     const handleLogOut = () => {
         logOut()
@@ -21,7 +21,20 @@ const Nabvar = () => {
         <li><Link to="/blog">Blogs</Link></li>
         {user?.uid ?
             <>
-                <li><Link to="/dashboard">Dashboard</Link></li>
+                {/* <li><Link to="/dashboard">Dashboard</Link></li> */}
+                {/* dashboard role condition start */}
+                {
+                    userRoleInfo?.role === "admin" && <li><Link to="/dashboard/allusers">Dashboard</Link></li>
+                }
+                {
+                    userRoleInfo?.role === "Seller" && <li><Link to="/dashboard/seller/myproduct">Dashboard</Link></li>
+                }
+                {
+                    userRoleInfo?.role === "Buyer" && <li><Link to="/dashboard/buyer/myorders">Dashboard</Link></li>
+                }
+
+                {/* dashboard role condition end */}
+
                 <li><Link to="/login"><button onClick={handleLogOut}>SignOut</button></Link></li>
                 <li><img className='w-16 h-16 rounded-full' src={user?.photoURL} alt="" /></li>
             </>

@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import PrimaryButton from '../../components/PrimaryButton/PrimaryButton';
 
 const CategoriesOption = ({ categoriesOption }) => {
-    
-    const {img, category_name} = categoriesOption ;
+
+    const { img, category_name } = categoriesOption;
     return (
         <>
             <div className="card card-compact bg-base-100 shadow-xl">

@@ -1,23 +1,28 @@
 [
-    {
-      "category_id": "1",
-      "category_name": "Toyota",
-      "img" : "https://www.ttnews.com/sites/default/files/images/articles/toyota_0.jpg"
-    },
-    {
-      "category_id": "2",
-      "category_name": "BMW",
-      "img" : "https://www.just-auto.com/wp-content/uploads/sites/30/2021/04/2020-07-02-11-21-p90392494_highres_startofproduction_cropped_90.jpg"
-    },
-    {
-      "category_id": "3",
-      "category_name": "Tesla",
-      "img" : "https://tesla-cdn.thron.com/delivery/public/image/tesla/649c549e-12b4-40c6-9294-7e996b8d3ccb/bvlatuR/std/4096x3071/Model-S-Specs-Hero-Desktop-LHD"
-    },
-    {
-      "category_id": "4",
-      "category_name": "Rolls-Royce",
-      "img" : "https://www.rolls-roycemotorcarsranchomirage.com/static/dealer-12176/2023-Rolls-Royce-Phantom-Series-II25.jpeg"
-    }
-    
-  ]
+  {
+    "category_id": "1",
+    "category_name": "Toyota",
+    "img": "https://www.ttnews.com/sites/default/files/images/articles/toyota_0.jpg"
+  },
+  {
+    "category_id": "2",
+    "category_name": "BMW",
+    "img": "https://www.just-auto.com/wp-content/uploads/sites/30/2021/04/2020-07-02-11-21-p90392494_highres_startofproduction_cropped_90.jpg"
+  },
+  {
+    "category_id": "3",
+    "category_name": "Tesla",
+    "img": "https://s2.best-wallpaper.net/wallpaper/1280x1024/2007/Tesla-white-car-front-view-night_1280x1024.jpg"
+  },
+  {
+    "category_id": "4",
+    "category_name": "Rolls-Royce",
+    "img": "https://www.rolls-roycemotorcarsranchomirage.com/static/dealer-12176/2023-Rolls-Royce-Phantom-Series-II25.jpeg"
+  },
+  {
+    "email": "musi@15.com",
+    "name": "musfiq",
+    "role": "Seller",
+    "_id": "6388e25bd1157fcc7f896a18"
+  }
+]

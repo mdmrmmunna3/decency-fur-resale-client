@@ -19,7 +19,7 @@ const AllUsers = () => {
     const handleMakeAdmin = id => {
         fetch(`https://decency-fur-resale-server.vercel.app/allusers/admin/${id}`, {
             method: 'PUT',
-           
+
         })
             .then(res => res.json())
             .then(data => {
@@ -42,7 +42,7 @@ const AllUsers = () => {
         console.log(user)
         fetch(`https://decency-fur-resale-server.vercel.app/allusers/${user._id}`, {
             method: 'DELETE',
-            
+
         })
             .then(res => res.json())
             .then(data => {
@@ -80,7 +80,9 @@ const AllUsers = () => {
                                 <td>{user?.email}</td>
                                 <td>{user?.role}</td>
                                 <td>{user?.role !== 'admin' ? <button onClick={() => handleMakeAdmin(user._id)} className='btn btn-xs btn-primary'>Make Admin</button> : <button className='btn btn-xs btn-primary'>Admin</button>}</td>
-                                <td><label onClick={() => setDeletingUser(user)} htmlFor="confirmation-modal" className='btn btn-sm btn-error'>Delete</label></td>
+                                <td>{
+                                    user?.role === "admin" ? <button onClick={() => setDeletingUser(user)} htmlFor="confirmation-modal" className='btn btn-sm btn-error' disabled>Delete</button> : <label onClick={() => setDeletingUser(user)} htmlFor="confirmation-modal" className='btn btn-sm btn-error'>Delete</label>
+                                }</td>
                             </tr>)
                         }
 
