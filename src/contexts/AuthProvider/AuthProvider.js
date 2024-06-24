@@ -10,13 +10,18 @@ const AuthProvider = ({ children }) => {
     const [loading, setLoading] = useState(true);
     const [userRoleInfo, setUserRoleInfo] = useState({});
 
-    useEffect(()=> {
-        fetch(`https://decency-fur-resale-server.vercel.app/allusers/userInfo?email=${user?.email}`)
-        .then(res => res.json())
-        .then(data => {
-            setUserRoleInfo(data)
-        })
-    } ,[user?.email])
+    useEffect(() => {
+        fetch(`http://localhost:5000/allusers/role?email=${user?.email}`)
+            .then(res => res.json())
+            .then(data => {
+                // console.log(data);
+                setUserRoleInfo(data);
+            })
+            .catch(error => {
+                console.error('Error fetching user info:', error);
+            });
+
+    }, [user?.email]);
 
 
     // signup with googlepop 
@@ -38,11 +43,11 @@ const AuthProvider = ({ children }) => {
         return signInWithEmailAndPassword(auth, email, password);
     }
 
-     // updateUser
-     const updateUser = (name, photo) => {
+    // updateUser
+    const updateUser = (name, photo) => {
         setLoading(true);
         return updateProfile(auth.currentUser, {
-            displayName: name, 
+            displayName: name,
             photoURL: photo,
         });
     }

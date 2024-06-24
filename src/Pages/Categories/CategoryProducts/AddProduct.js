@@ -45,7 +45,7 @@ const AddProduct = () => {
             condition,
         };
 
-        fetch('https://decency-fur-resale-server.vercel.app/products', {
+        fetch('http://localhost:5000/products', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',

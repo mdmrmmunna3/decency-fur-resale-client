@@ -7,7 +7,7 @@ import Swal from 'sweetalert2';
 const AllSeller = () => {
     const { user } = useContext(AuthContext);
 
-    const url = `https://decency-fur-resale-server.vercel.app/allusers?email=${user?.email}`;
+    const url = `http://localhost:5000/allusers?email=${user?.email}`;
 
     const { data: users = [], refetch, isLoading } = useQuery({
         queryKey: ['users', user?.email],
@@ -30,7 +30,7 @@ const AllSeller = () => {
         }).then(async (result) => {
             if (result.isConfirmed) {
                 try {
-                    const res = await fetch(`https://decency-fur-resale-server.vercel.app/allusers/${seller?._id}`, {
+                    const res = await fetch(`http://localhost:5000/allusers/${seller?._id}`, {
                         method: 'PATCH',
                         headers: {
                             'Content-Type': 'application/json'

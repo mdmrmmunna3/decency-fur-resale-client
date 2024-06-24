@@ -10,11 +10,11 @@ const CategoryProducts = () => {
     const { userRoleInfo } = useContext(AuthContext);
 
     useEffect(() => {
-        fetch('https://decency-fur-resale-server.vercel.app/products')
+        fetch('http://localhost:5000/products')
             .then(res => res.json())
             .then(data => {
                 const ramaining = data.filter(product => product.brand === brand);
-                console.log(ramaining)
+                // console.log(ramaining)
                 setProducts(ramaining);
             })
     }, [brand])

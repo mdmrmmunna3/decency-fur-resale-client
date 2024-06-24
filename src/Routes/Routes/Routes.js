@@ -38,7 +38,7 @@ const router = createBrowserRouter([
                 element: <Categories></Categories>
             },
             {
-                path:'/category-product/:brand',
+                path: '/category-product/:brand',
                 element: <PrivateRoute><CategoryProducts></CategoryProducts></PrivateRoute>
             },
             {
@@ -60,7 +60,7 @@ const router = createBrowserRouter([
             {
                 path: '/bookingProduct/:brand/:id',
                 element: <BookingModal></BookingModal>,
-                loader: ({params}) => fetch(`https://decency-fur-resale-server.vercel.app/products/${params.id}`) 
+                loader: ({ params }) => fetch(`http://localhost:5000/products/${params.id}`)
             }
         ]
     },
@@ -70,32 +70,32 @@ const router = createBrowserRouter([
         errorElement: <ErrorPage></ErrorPage>,
         children: [
             {
-                path:'/dashboard/allusers',
+                path: '/dashboard/allusers',
                 element: <AllUsers></AllUsers>
             },
             {
-                path:'/dashboard/allsellers',
+                path: '/dashboard/allsellers',
                 element: <AllSeller></AllSeller>
             },
             {
-                path:'/dashboard/allbuyers',
+                path: '/dashboard/allbuyers',
                 element: <AllBuyers></AllBuyers>
             },
             {
-                path:'/dashboard/seller/myproduct',
+                path: '/dashboard/seller/myproduct',
                 element: <Sellers></Sellers>
             },
             {
-                path:'/dashboard/seller/addproduct',
+                path: '/dashboard/seller/addproduct',
                 element: <AddNewProduct></AddNewProduct>
             },
             {
-                path:'/dashboard/buyer/myorders',
+                path: '/dashboard/buyer/myorders',
                 element: <Buyers></Buyers>
             },
         ]
     },
-    
+
 ])
 
 export default router;

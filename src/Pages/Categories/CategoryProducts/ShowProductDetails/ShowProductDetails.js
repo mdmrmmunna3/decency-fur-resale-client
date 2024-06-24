@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import {  useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 const ShowProductDetails = () => {
-    const {id} = useParams()
+    const { id } = useParams()
     const [product, setProduct] = useState({})
-    
+
     useEffect(() => {
-        fetch(`https://decency-fur-resale-server.vercel.app/products/${id}`)
+        fetch(`http://localhost:5000/products/${id}`)
             .then(res => res.json())
             .then(data => setProduct(data))
     }, [id])
@@ -25,10 +25,10 @@ const ShowProductDetails = () => {
         phone,
         sellerName,
         sellerImg,
-        
+
     } = product;
 
-    
+
 
     return (
         <div>
@@ -60,7 +60,7 @@ const ShowProductDetails = () => {
                         <p className="mb-1 sm lg:text-xl font-semibold">condition: {condition}</p>
                     </div>
                 </div>
-                
+
             </div>
 
         </div>

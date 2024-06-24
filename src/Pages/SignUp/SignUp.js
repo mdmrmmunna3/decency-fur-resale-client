@@ -66,7 +66,7 @@ const SignUp = () => {
     // create saved user info
     const saveUser = (name, email) => {
         const user = { name, email, role };
-        fetch('https://decency-fur-resale-server.vercel.app/allusers', {
+        fetch('http://localhost:5000/allusers', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -77,6 +77,7 @@ const SignUp = () => {
             .then(data => {
                 // getUserToken(email);
                 setCreateUserEmail(email);
+                navigate("/")
             })
             .catch(err => console.error(err));
     }
@@ -115,7 +116,7 @@ const SignUp = () => {
                                 required: 'email is required'
                             })
                             }
-                            placeholder="email" className="input input-bordered w-full max-w-xs"/>
+                            placeholder="email" className="input input-bordered w-full max-w-xs" />
                         {errors.email && <p className='text-red-600'>{errors.email?.message}</p>}
                     </div>
 
@@ -162,7 +163,7 @@ const SignUp = () => {
                 <p>Already have an account?<Link className='text-secondary' to='/login'>Please Login</Link> </p>
                 <div>
                     <div className="divider">OR</div>
-                    <button  onClick={handleSignUpGoogle} className='btn btn-outline w-full'><FcGoogle className='text-2xl mr-2'></FcGoogle> CONTINUE WITH GOOGLE</button>
+                    <button onClick={handleSignUpGoogle} className='btn btn-outline w-full'><FcGoogle className='text-2xl mr-2'></FcGoogle> CONTINUE WITH GOOGLE</button>
                 </div>
             </div>
         </section>

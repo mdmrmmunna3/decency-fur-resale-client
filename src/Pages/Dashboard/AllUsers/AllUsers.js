@@ -10,14 +10,14 @@ const AllUsers = () => {
     const { data: allusers = [], refetch, isLoading } = useQuery({
         queryKey: ['allusers'],
         queryFn: async () => {
-            const res = await fetch('https://decency-fur-resale-server.vercel.app/allusers', {})
+            const res = await fetch('http://localhost:5000/allusers', {})
             const data = await res.json();
             return data;
         }
     })
 
     const handleMakeAdmin = id => {
-        fetch(`https://decency-fur-resale-server.vercel.app/allusers/admin/${id}`, {
+        fetch(`http://localhost:5000/allusers/admin/${id}`, {
             method: 'PUT',
 
         })
@@ -40,7 +40,7 @@ const AllUsers = () => {
     // handleDelete
     const handleUserDelete = user => {
         console.log(user)
-        fetch(`https://decency-fur-resale-server.vercel.app/allusers/${user._id}`, {
+        fetch(`http://localhost:5000/allusers/${user._id}`, {
             method: 'DELETE',
 
         })
