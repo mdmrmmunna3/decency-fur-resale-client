@@ -1,12 +1,13 @@
 import React, { useContext, useState } from 'react';
 import toast from 'react-hot-toast';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 
 const AddProduct = () => {
     const { brand } = useParams();
     const { user, setLoading } = useContext(AuthContext);
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const navigate = useNavigate();
 
     const handleAddProduct = event => {
         event.preventDefault();
@@ -59,6 +60,7 @@ const AddProduct = () => {
                     setLoading(true);
                     form.reset();
                     setIsModalOpen(false); // Close the modal
+                    navigate("/dashboard/seller/myproduct");
                 }
             })
             .catch(err => console.error(err))

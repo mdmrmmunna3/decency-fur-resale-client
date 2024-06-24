@@ -1,10 +1,12 @@
 import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
+import { useNavigate } from 'react-router-dom';
 
 const AddNewProduct = () => {
 
     const { user } = useContext(AuthContext);
+    const navigate = useNavigate();
 
     const handleAddProduct = event => {
         event.preventDefault();
@@ -56,6 +58,7 @@ const AddNewProduct = () => {
                     toast.success('Add new Product successfully');
                     form.reset();
                     document.getElementById('add-product').checked = false; // Close the modal
+                    navigate("/dashboard/seller/myproduct");
                 }
             })
             .catch(err => console.error(err))

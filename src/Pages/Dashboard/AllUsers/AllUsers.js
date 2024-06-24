@@ -19,7 +19,6 @@ const AllUsers = () => {
     const handleMakeAdmin = id => {
         fetch(`http://localhost:5000/allusers/admin/${id}`, {
             method: 'PUT',
-
         })
             .then(res => res.json())
             .then(data => {
@@ -46,7 +45,7 @@ const AllUsers = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+                // console.log(data);
                 if (data.deletedCount > 0) {
                     toast.success(`${user?.role} : ${user?.name} Deleted Successfully`)
                     refetch();

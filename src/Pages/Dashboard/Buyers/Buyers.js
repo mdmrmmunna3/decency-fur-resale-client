@@ -22,7 +22,7 @@ const Buyers = () => {
         }
     })
 
-    console.log(bookings)
+    // console.log(bookings)
     if (isLoading) {
         return <Loading></Loading>
     }

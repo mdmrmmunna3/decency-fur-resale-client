@@ -45,7 +45,7 @@ const SignUp = () => {
                 createUser(data.email, data.password)
                     .then(result => {
                         const user = result.user;
-                        console.log(user);
+                        // console.log(user);
                         updateUser(name, ImageData.data.url)
                             .then(() => {
                                 saveUser(data.name, data.email)
