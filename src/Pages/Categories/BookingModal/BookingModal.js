@@ -24,13 +24,13 @@ const BookingModal = () => {
         fetch(`http://localhost:5000/bookingOrders`)
             .then(res => res.json())
             .then(data => {
-                console.log(data);
-                const findProduct = data.find(mtpro => mtpro?.productId === bookdata?._id);
+                // console.log(data);
+                const findProduct = data.find(mtprod => mtprod?.productId === bookdata?._id);
                 setMatchProduct(findProduct)
             })
     }, [bookdata?._id]);
 
-    console.log(matchProduct)
+    // console.log(matchProduct)
 
     const handleBooking = event => {
         event.preventDefault();

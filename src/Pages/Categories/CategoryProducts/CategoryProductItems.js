@@ -4,7 +4,7 @@ import { MdVerified } from "react-icons/md";
 import { useQuery } from '@tanstack/react-query';
 
 const CategoryProductItems = ({ product }) => {
-
+    const [matchProduct, setMatchProduct] = useState({})
     const [isSellerVerified, setIsSellerVerified] = useState(false);
 
     const { data: users = [] } = useQuery({
@@ -25,6 +25,14 @@ const CategoryProductItems = ({ product }) => {
         }
     }, [users, product.sellerEmail]);
 
+    useEffect(() => {
+        fetch(`http://localhost:5000/bookingOrders`)
+            .then(res => res.json())
+            .then(data => {
+                const findProduct = data.find(mtprod => mtprod?.productId === product?._id);
+                setMatchProduct(findProduct);
+            })
+    }, [product?._id]);
 
     const {
         brand,
@@ -83,28 +91,12 @@ const CategoryProductItems = ({ product }) => {
                 style={{
                     boxShadow: `rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px`
                 }}
-                className="p-5 rounded-md">
+                className="p-5 rounded-md relative">
                 <div className="flex gap-3 lg:flex-row flex-col">
 
                     <div className="flex items-center space-x-2 lg:hidden">
                         <img src={sellerImg} alt="" className="object-cover object-center w-10 h-10 rounded-full shadow-sm dark:bg-gray-500 dark:border-gray-700" />
-                        <div className="flex flex-col -space-y-1">
-                            <div className='flex gap-4 items-center'>
-                                <h2 className="text-sm font-semibold leading-none capitalize">{sellerName}</h2>
-                                {
-                                    isSellerVerified && <span className='text-green-500'><MdVerified /></span>
-                                }
-                            </div>
-                            <span className="text-sm py-2 dark:text-gray-400">location: {location}</span>
-                            <span className="text-sm dark:text-gray-400">phone: {phone}</span>
-                        </div>
-
-                    </div>
-                    <img src={image_url} alt="" title={productName} className="object-cover object-center  dark:bg-gray-500 h-60 md:h-80 lg:h-60 lg:w-40 w-full" />
-
-                    <div>
-                        <div className="lg:flex items-center space-x-2 hidden pb-2">
-                            <img src={sellerImg} alt="" className="object-cover object-center w-10 h-10 rounded-full shadow-sm dark:bg-gray-500 dark:border-gray-700" />
+                        <div className='flex gap-10'>
                             <div className="flex flex-col -space-y-1">
                                 <div className='flex gap-4 items-center'>
                                     <h2 className="text-sm font-semibold leading-none capitalize">{sellerName}</h2>
@@ -114,6 +106,36 @@ const CategoryProductItems = ({ product }) => {
                                 </div>
                                 <span className="text-sm py-2 dark:text-gray-400">location: {location}</span>
                                 <span className="text-sm dark:text-gray-400">phone: {phone}</span>
+                            </div>
+
+                            <>
+                                <p className='bg-blue-600 px-2 text-white rounded-lg absolute right-6'>Available</p>
+                                {/* <p>Available</p> */}
+                            </>
+                        </div>
+
+                    </div>
+                    <img src={image_url} alt="" title={productName} className="object-cover object-center  dark:bg-gray-500 h-60 md:h-80 lg:h-60 lg:w-40 w-full" />
+
+                    <div>
+                        <div className="lg:flex items-center space-x-2 hidden pb-2">
+                            <img src={sellerImg} alt="" className="object-cover object-center w-10 h-10 rounded-full shadow-sm dark:bg-gray-500 dark:border-gray-700" />
+                            <div className="flex gap-10">
+                                <div className="flex flex-col -space-y-1">
+                                    <div className='flex gap-4 items-center'>
+                                        <h2 className="text-sm font-semibold leading-none capitalize">{sellerName}</h2>
+                                        {
+                                            isSellerVerified && <span className='text-green-500'><MdVerified /></span>
+                                        }
+                                    </div>
+                                    <span className="text-sm py-2 dark:text-gray-400">location: {location}</span>
+                                    <span className="text-sm dark:text-gray-400">phone: {phone}</span>
+                                </div>
+                                <>
+                                    {
+                                        matchProduct?.productId === product?._id ? <p className='bg-blue-600 px-2 text-white rounded-lg absolute right-6'>Sold</p> : <p className='bg-blue-600 px-2 text-white rounded-lg absolute right-6'>Available</p>
+                                    }
+                                </>
                             </div>
 
                         </div>
