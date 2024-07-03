@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 import Loading from '../../Shared/Loading/Loading';
@@ -11,12 +11,26 @@ const BookingModal = () => {
     const { user } = useContext(AuthContext);
     const [bookdata, setBookdata] = useState({});
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [matchProduct, setMatchProduct] = useState({})
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetch(`http://localhost:5000/products/${id}`)
             .then(res => res.json())
             .then(data => setBookdata(data))
     }, [id]);
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/bookingOrders`)
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                const findProduct = data.find(mtpro => mtpro?.productId === bookdata?._id);
+                setMatchProduct(findProduct)
+            })
+    }, [bookdata?._id]);
+
+    console.log(matchProduct)
 
     const handleBooking = event => {
         event.preventDefault();
@@ -33,7 +47,8 @@ const BookingModal = () => {
             productImg: bookdata?.image_url,
             price: bookdata?.resale_price,
             location,
-            phone
+            phone,
+            productId: bookdata?._id
         };
 
         fetch('http://localhost:5000/bookingOrders', {
@@ -49,6 +64,7 @@ const BookingModal = () => {
                     toast.success('Booked Successfully');
                     form.reset();
                     setIsModalOpen(false);
+                    navigate('/dashboard/buyer/myorders')
                 }
             })
             .catch(err => console.error(err));
@@ -59,7 +75,9 @@ const BookingModal = () => {
             <ShowProductDetails />
 
             <div className='text-center my-12'>
-                <button className="btn btn-primary" onClick={() => setIsModalOpen(true)}>Book Product</button>
+                {
+                    matchProduct?.productId ? <button className="btn btn-primary text-white" disabled onClick={() => setIsModalOpen(true)}>Book Product</button> : <button className="btn btn-primary text-white" onClick={() => setIsModalOpen(true)}>Book Product</button>
+                }
             </div>
 
             {isModalOpen && (

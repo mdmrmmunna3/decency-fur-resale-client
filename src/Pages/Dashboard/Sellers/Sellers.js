@@ -81,6 +81,7 @@ const Sellers = () => {
                                 <th>Phone</th>
                                 <th>Ps_Date</th>
                                 <th>Location</th>
+                                <th>Status</th>
                                 <th>Delete</th>
                             </tr>
                         </thead>
@@ -97,6 +98,7 @@ const Sellers = () => {
                                             <td>{showProduct?.phone}</td>
                                             <td>{showProduct?.post_date}</td>
                                             <td>{showProduct?.location}</td>
+                                            <td>Available</td>
 
                                             <td>
                                                 <label onClick={() => handleDeleteProduct(showProduct)} className='font-medium bg-red-500 p-1 rounded-sm text-white cursor-pointer'>Delete</label>

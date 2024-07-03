@@ -121,7 +121,7 @@ const CategoryProductItems = ({ product }) => {
                             <div className="">
                                 <h2 ><span className=" lg:text-sm font-semibold">Brand:</span> {brand}</h2>
                                 <h2><span className=" lg:text-sm font-semibold">Product:</span> {productName}</h2>
-                                <p><span className='font-semibold'>Description: </span>{description.slice(0, 100)}... </p>
+                                <p><span className='font-semibold'>Description: </span>{description.slice(0, 90)}... </p>
                             </div>
                         </div>
                         <div className='flex justify-between '>
@@ -138,7 +138,7 @@ const CategoryProductItems = ({ product }) => {
                         </div>
                     </div>
                 </div>
-                <label className="btn btn-primary flex mt-3 text-white"><Link to={`/bookingProduct/${brand}/${_id}`}>Product Details</Link></label>
+                <label ><Link to={`/bookingProduct/${brand}/${_id}`} className="btn btn-primary flex mt-3 text-white">Product Details</Link></label>
             </div>
 
         </div>
