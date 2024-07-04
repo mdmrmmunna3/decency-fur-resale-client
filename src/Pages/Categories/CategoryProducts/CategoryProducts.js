@@ -21,7 +21,7 @@ const CategoryProducts = () => {
 
 
     return (
-        <div className='my-12'>
+        <div className='pt-32 pb-12'>
             {/* <h1>{products.length}</h1> */}
             <div className='grid lg:grid-cols-2 grid-cols-1 gap-6 mx-3'>
                 {

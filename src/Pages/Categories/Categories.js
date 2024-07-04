@@ -20,7 +20,7 @@ const Categories = () => {
 
     return (
         <section>
-            <h1 className='text-2xl lg:text-4xl navbar-title text-center my-4'>Brand Car Resale Categories Here!</h1>
+            <h1 className='text-2xl lg:text-4xl navbar-title text-center pt-6 pb-8'>Brand Car Resale Categories Here!</h1>
             <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6'>
                 {
                     categories.map(categoriesOption => <CategoriesOption key={categoriesOption._id} categoriesOption={categoriesOption} refetch={refetch} ></CategoriesOption>)

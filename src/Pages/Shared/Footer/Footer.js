@@ -3,6 +3,11 @@ import { Link } from 'react-router-dom';
 import { FaFacebook, FaGithub, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 
 const Footer = () => {
+    const getYear = () => {
+        const date = new Date();
+        let year = date.getFullYear();
+        document.getElementById("current_year").innerHTML = year;
+    }
     return (
         <section className=' py-20 px-4 text-white bg-black '
 
@@ -48,7 +53,8 @@ const Footer = () => {
                 </div>
                 <div className="grid justify-center pt-6 lg:justify-between mt-4">
                     <div className="flex flex-col self-center text-sm text-center md:block lg:col-start-1 md:space-x-6">
-                        <span>©2022 All rights reserved</span>
+                        {/* <p>Copyright &copy; <span onMouseEnter={getYear} id='current_year'>All rights reserved</span></p> */}
+                        <p onMouseEnter={getYear}>Copyright &copy; <span id="current_year"></span> All rights Reserved. Designed by Md Mustafijur Rahman Munna</p>
                         <Link to="/">
                             <span>Privacy policy</span>
                         </Link>

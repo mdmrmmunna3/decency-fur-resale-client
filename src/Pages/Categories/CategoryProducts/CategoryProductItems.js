@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { MdVerified } from "react-icons/md";
 import { useQuery } from '@tanstack/react-query';
+import { PhotoProvider, PhotoView } from 'react-photo-view';
 
 const CategoryProductItems = ({ product }) => {
     const [matchProduct, setMatchProduct] = useState({})
@@ -109,13 +110,18 @@ const CategoryProductItems = ({ product }) => {
                             </div>
 
                             <>
-                                <p className='bg-blue-600 px-2 text-white rounded-lg absolute right-6'>Available</p>
-                                {/* <p>Available</p> */}
+                                {
+                                    matchProduct?.productId === product?._id ? <p className='bg-blue-600 px-2 text-white rounded-lg absolute right-6'>Sold</p> : <p className='bg-blue-600 px-2 text-white rounded-lg absolute right-6'>Available</p>
+                                }
                             </>
                         </div>
 
                     </div>
-                    <img src={image_url} alt="" title={productName} className="object-cover object-center  dark:bg-gray-500 h-60 md:h-80 lg:h-60 lg:w-40 w-full" />
+                    <PhotoProvider>
+                        <PhotoView src={image_url}>
+                            <img src={image_url} alt="" title={productName} className="object-cover object-center  dark:bg-gray-500 h-60 md:h-80 lg:h-60 lg:w-40 w-full cursor-pointer" />
+                        </PhotoView>
+                    </PhotoProvider>
 
                     <div>
                         <div className="lg:flex items-center space-x-2 hidden pb-2">

@@ -8,7 +8,7 @@ import ShowProductDetails from '../CategoryProducts/ShowProductDetails/ShowProdu
 
 const BookingModal = () => {
     const { id, brand } = useParams();
-    const { user } = useContext(AuthContext);
+    const { user, userRoleInfo } = useContext(AuthContext);
     const [bookdata, setBookdata] = useState({});
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [matchProduct, setMatchProduct] = useState({})
@@ -75,8 +75,21 @@ const BookingModal = () => {
             <ShowProductDetails />
 
             <div className='text-center my-12'>
-                {
-                    matchProduct?.productId ? <button className="btn btn-primary text-white" disabled onClick={() => setIsModalOpen(true)}>Book Product</button> : <button className="btn btn-primary text-white" onClick={() => setIsModalOpen(true)}>Book Product</button>
+                {(userRoleInfo?.role === "admin" || userRoleInfo?.role === "Seller") ?
+                    <>
+                        <div className='hidden'>
+                            {
+                                matchProduct?.productId ? <button className="btn btn-primary text-white" disabled onClick={() => setIsModalOpen(true)}>Book Product</button> : <button className="btn btn-primary text-white" onClick={() => setIsModalOpen(true)}>Book Product</button>
+                            }
+                        </div>
+                    </> :
+                    <>
+                        <div>
+                            {
+                                matchProduct?.productId ? <button className="btn btn-primary text-white" disabled onClick={() => setIsModalOpen(true)}>Book Product</button> : <button className="btn btn-primary text-white" onClick={() => setIsModalOpen(true)}>Book Product</button>
+                            }
+                        </div>
+                    </>
                 }
             </div>
 

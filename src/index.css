@@ -15,3 +15,26 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+/* modal related css  */
+
+.react-responsive-modal-modal {
+  max-width: 600px !important;
+  text-align: center !important;
+  display: block !important;
+  top: 10%;
+  border-radius: 8px;
+}
+
+@media only screen and (min-width:641px) and (max-width:768px) {
+  .react-responsive-modal-modal {
+    left: 9%;
+  }
+}
+
+@media only screen and (min-width:1024px) {
+  .react-responsive-modal-modal {
+    left: 26%;
+  }
+}

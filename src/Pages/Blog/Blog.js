@@ -6,7 +6,7 @@ import blog4 from '../../assets/blog/imge4.png';
 
 const Blog = () => {
     return (
-        <div>
+        <div className='py-16'>
             <h1 className='lg:text-3xl text-2xl text-blue-500 text-center font-semibold navbar-title my-8'>Some popular FAQ Qestions here!</h1>
             <div className='grid gap-8 grid-cols-1 lg:grid-cols-2'>
                 <div className='border-2 rounded-lg shadow-lg p-4'>

@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 import Loading from '../../Shared/Loading/Loading';
 import Swal from 'sweetalert2';
@@ -8,6 +8,8 @@ import Swal from 'sweetalert2';
 
 const Sellers = () => {
     const { user } = useContext(AuthContext);
+    const [matchProduct, setMatchProduct] = useState([])
+
     const url = `http://localhost:5000/products?email=${user?.email}`
     // console.log(url);
     const { data: showProducts = [], refetch, isLoading } = useQuery({
@@ -21,6 +23,14 @@ const Sellers = () => {
         }
     })
 
+    useEffect(() => {
+        fetch(`http://localhost:5000/bookingOrders`)
+            .then(res => res.json())
+            .then(data => {
+                setMatchProduct(data);
+            })
+    }, []);
+    // console.log(matchProduct)
 
     const handleDeleteProduct = async (product) => {
         Swal.fire({
@@ -61,13 +71,13 @@ const Sellers = () => {
 
     }
 
-    console.log(showProducts)
+    // console.log(showProducts)
     if (isLoading) {
         return <Loading></Loading>
     }
 
     return (
-        <section>
+        <section className='pt-20'>
             <h2 className='text-center text-2xl lg:text-4xl navbar-title my-8'>My Products</h2>
             {
 
@@ -98,14 +108,17 @@ const Sellers = () => {
                                             <td>{showProduct?.phone}</td>
                                             <td>{showProduct?.post_date}</td>
                                             <td>{showProduct?.location}</td>
-                                            <td>Available</td>
+                                            <td>
+                                                {
+                                                    matchProduct?.find(mtprod => mtprod?.productId === showProduct?._id) ? 'Sold' : 'Available'
+                                                }
+                                            </td>
 
                                             <td>
                                                 <label onClick={() => handleDeleteProduct(showProduct)} className='font-medium bg-red-500 p-1 rounded-sm text-white cursor-pointer'>Delete</label>
                                             </td>
                                         </>
                                     }
-
                                 </tr>)
                             }
 

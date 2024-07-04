@@ -12,12 +12,16 @@ const DashboardLayout = () => {
             <Nabvar></Nabvar>
             <div className="drawer drawer-mobile ">
                 <input id="dashboard-drawer" type="checkbox" className="drawer-toggle" />
-                <div className="drawer-content">
+                <div className="drawer-content mx-2 ">
                     <Outlet></Outlet>
                 </div>
                 <div className="drawer-side">
                     <label htmlFor="dashboard-drawer" className="drawer-overlay"></label>
-                    <ul className="menu p-4 w-80 font-semibold text-blue-600">
+                    <ul
+                        style={{
+                            background: `linear-gradient(to bottom, #052029, #00001e)`
+                        }}
+                        className="menu bg-none w-80 font-semibold text-white pt-28">
                         {userRoleInfo?.role === "admin" &&
                             <>
                                 <li><Link to='/dashboard/allusers'>AllUsers</Link></li>
@@ -26,21 +30,21 @@ const DashboardLayout = () => {
                             </>
                         }
 
-                        {   userRoleInfo?.role === "Seller" &&
+                        {userRoleInfo?.role === "Seller" &&
                             <>
                                 <li><Link to='/dashboard/seller/myproduct'>My Product</Link></li>
                                 <li><Link to='/dashboard/seller/addproduct'>Add product</Link></li>
-                                
+
                             </>
                         }
 
-                        {   userRoleInfo?.role === "Buyer" &&
+                        {userRoleInfo?.role === "Buyer" &&
                             <>
                                 <li><Link to='/dashboard/buyer/myorders'>My Orders</Link></li>
                             </>
                         }
-                        
-                       
+
+
                     </ul>
                 </div>
             </div>

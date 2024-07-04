@@ -7,22 +7,20 @@ import Loading from '../../Shared/Loading/Loading';
 const AllBuyers = () => {
     const { user } = useContext(AuthContext);
 
-    const url = `http://localhost:5000/bookingOrders?email=${user?.email}`
+    const url = `http://localhost:5000/allusers?email=${user?.email}`
     // console.log(url);
-    const { data: bookings = [], isLoading } = useQuery({
-        queryKey: ['bookings', user?.email],
+    const { data: users = [], isLoading } = useQuery({
+        queryKey: ['users', user?.email],
         queryFn: async () => {
-            const res = await fetch(url, {
-                // headers: {
-                //     authorization: `bearer ${localStorage.getItem('accessToken')}`
-                // }
-            });
+            const res = await fetch(url);
             const data = await res.json();
             return data;
         }
-    })
+    });
 
-    // console.log(bookings)
+    const buyers = users.filter(user => user.role === 'Buyer');
+    console.log(buyers)
+
     if (isLoading) {
         return <Loading></Loading>
     }
@@ -38,23 +36,21 @@ const AllBuyers = () => {
                         <tr>
                             <th></th>
                             <th>Name</th>
-                            <th>Image</th>
-                            <th>Title</th>
-                            <th>Price</th>
+                            <th>Email</th>
+                            <th>Role</th>
                         </tr>
                     </thead>
 
                     <tbody>
 
                         {
-                            bookings?.map((booking, i) => <tr key={booking?._id}>
+                            buyers?.map((buyer, i) => <tr key={buyer?._id}>
 
                                 <>
                                     <th>{i + 1}</th>
-                                    <td>{booking?.buyerName}</td>
-                                    <td><img className="mask mask-squircle w-12 h-12" src={booking?.productImg} alt="" /></td>
-                                    <td>{booking?.productName}</td>
-                                    <td>{booking?.price}</td>
+                                    <td>{buyer?.name}</td>
+                                    <td>{buyer?.email}</td>
+                                    <td>{buyer?.role}</td>
                                 </>
 
                             </tr>
