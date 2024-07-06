@@ -10,7 +10,7 @@ const Sellers = () => {
     const { user } = useContext(AuthContext);
     const [matchProduct, setMatchProduct] = useState([])
 
-    const url = `http://localhost:5000/products?email=${user?.email}`
+    const url = `https://decency-fur-resale-server.vercel.app/products?email=${user?.email}`
     // console.log(url);
     const { data: showProducts = [], refetch, isLoading } = useQuery({
         queryKey: ['showProducts', user?.email],
@@ -24,7 +24,7 @@ const Sellers = () => {
     })
 
     useEffect(() => {
-        fetch(`http://localhost:5000/bookingOrders`)
+        fetch(`https://decency-fur-resale-server.vercel.app/bookingOrders`)
             .then(res => res.json())
             .then(data => {
                 setMatchProduct(data);
@@ -44,7 +44,7 @@ const Sellers = () => {
         }).then(async (result) => {
             if (result.isConfirmed) {
                 try {
-                    const res = await fetch(`http://localhost:5000/products/${product?._id}`, {
+                    const res = await fetch(`https://decency-fur-resale-server.vercel.app/products/${product?._id}`, {
                         method: 'DELETE',
                     });
 

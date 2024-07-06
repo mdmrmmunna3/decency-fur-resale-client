@@ -66,7 +66,7 @@ const SignUp = () => {
     // create saved user info
     const saveUser = (name, email) => {
         const user = { name, email, role };
-        fetch('http://localhost:5000/allusers', {
+        fetch('https://decency-fur-resale-server.vercel.app/allusers', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',

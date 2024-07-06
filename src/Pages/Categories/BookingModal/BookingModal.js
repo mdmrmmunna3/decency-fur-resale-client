@@ -15,13 +15,13 @@ const BookingModal = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch(`http://localhost:5000/products/${id}`)
+        fetch(`https://decency-fur-resale-server.vercel.app/products/${id}`)
             .then(res => res.json())
             .then(data => setBookdata(data))
     }, [id]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/bookingOrders`)
+        fetch(`https://decency-fur-resale-server.vercel.app/bookingOrders`)
             .then(res => res.json())
             .then(data => {
                 // console.log(data);
@@ -51,7 +51,7 @@ const BookingModal = () => {
             productId: bookdata?._id
         };
 
-        fetch('http://localhost:5000/bookingOrders', {
+        fetch('https://decency-fur-resale-server.vercel.app/bookingOrders', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -86,7 +86,7 @@ const BookingModal = () => {
                     <>
                         <div>
                             {
-                                matchProduct?.productId ? <button className="btn btn-primary text-white" disabled onClick={() => setIsModalOpen(true)}>Book Product</button> : <button className="btn btn-primary text-white" onClick={() => setIsModalOpen(true)}>Book Product</button>
+                                matchProduct?.productId ? <button className="btn btn-primary text-white" disabled onClick={() => setIsModalOpen(true)}>Book Product</button> : <button className="btn bg-[#020d23] text-white" onClick={() => setIsModalOpen(true)}>Book Product</button>
                             }
                         </div>
                     </>

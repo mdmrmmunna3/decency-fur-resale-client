@@ -49,7 +49,7 @@ const AddNewProduct = () => {
             condition,
         }
 
-        fetch('http://localhost:5000/products', {
+        fetch('https://decency-fur-resale-server.vercel.app/products', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -75,7 +75,7 @@ const AddNewProduct = () => {
                 <input type="checkbox" id="add-product" className="modal-toggle" />
 
 
-                <label className="btn btn-primary text-white" onClick={() => setOpen(true)}>
+                <label className="btn bg-[#020d23] text-white" onClick={() => setOpen(true)}>
                     Add Product
                 </label>
                 <Modal open={open} onClose={() => setOpen(false)}>

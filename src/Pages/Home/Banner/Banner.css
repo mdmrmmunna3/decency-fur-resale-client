@@ -17,11 +17,11 @@
     padding: 16px;
 }
 
-.btn {
+.arrow_btn {
     background-color: transparent;
     border-color: rgb(13, 49, 49);
 }
 
-.btn:hover {
+.arrow_btn:hover {
     background-color: #020d23;
 }

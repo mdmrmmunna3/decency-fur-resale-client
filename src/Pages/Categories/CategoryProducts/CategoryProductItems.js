@@ -11,7 +11,7 @@ const CategoryProductItems = ({ product }) => {
     const { data: users = [] } = useQuery({
         queryKey: ['allusers'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/allusers');
+            const res = await fetch('https://decency-fur-resale-server.vercel.app/allusers');
             const data = await res.json();
             return data;
         }
@@ -27,7 +27,7 @@ const CategoryProductItems = ({ product }) => {
     }, [users, product.sellerEmail]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/bookingOrders`)
+        fetch(`https://decency-fur-resale-server.vercel.app/bookingOrders`)
             .then(res => res.json())
             .then(data => {
                 const findProduct = data.find(mtprod => mtprod?.productId === product?._id);
@@ -166,7 +166,7 @@ const CategoryProductItems = ({ product }) => {
                         </div>
                     </div>
                 </div>
-                <label ><Link to={`/bookingProduct/${brand}/${_id}`} className="btn btn-primary flex mt-3 text-white">Product Details</Link></label>
+                <label ><Link to={`/bookingProduct/${brand}/${_id}`} className="btn bg-[#020d23] flex mt-3 text-white">Product Details</Link></label>
             </div>
 
         </div>

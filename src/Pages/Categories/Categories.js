@@ -8,7 +8,7 @@ const Categories = () => {
     const { data: categories = [], isLoading, refetch } = useQuery({
         queryKey: ['categories',],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/categories')
+            const res = await fetch('https://decency-fur-resale-server.vercel.app/categories')
             const data = await res.json()
             return data;
         }
@@ -19,7 +19,7 @@ const Categories = () => {
     // console.log(categories)
 
     return (
-        <section>
+        <section className='pb-5'>
             <h1 className='text-2xl lg:text-4xl navbar-title text-center pt-6 pb-8 text-blue-600'>Brand Car Resale Categories Here!</h1>
             <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6'>
                 {

@@ -61,7 +61,7 @@ const router = createBrowserRouter([
             {
                 path: '/bookingProduct/:brand/:id',
                 element: <BookingModal></BookingModal>,
-                loader: ({ params }) => fetch(`http://localhost:5000/products/${params.id}`)
+                loader: ({ params }) => fetch(`https://decency-fur-resale-server.vercel.app/products/${params.id}`)
             }
         ]
     },
@@ -97,7 +97,7 @@ const router = createBrowserRouter([
             {
                 path: "/dashboard/payment/:id",
                 element: <Payment></Payment>,
-                loader: ({ params }) => fetch(`http://localhost:5000/bookingOrders/${params.id}`)
+                loader: ({ params }) => fetch(`https://decency-fur-resale-server.vercel.app/bookingOrders/${params.id}`)
             }
         ]
     },

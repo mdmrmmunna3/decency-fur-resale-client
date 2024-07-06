@@ -47,7 +47,7 @@ const AddProduct = () => {
             condition,
         };
 
-        fetch('http://localhost:5000/products', {
+        fetch('https://decency-fur-resale-server.vercel.app/products', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -109,7 +109,7 @@ const AddProduct = () => {
                 </div>
             )} */}
 
-            <label className="btn btn-primary text-white" onClick={() => setIsModalOpen(true)}>
+            <label className="btn bg-[#020d23] text-white" onClick={() => setIsModalOpen(true)}>
                 Add Product
             </label>
             <Modal open={isModalOpen} onClose={() => setIsModalOpen(false)}>
@@ -151,7 +151,7 @@ const AddProduct = () => {
                     <textarea name='description' className="textarea textarea-error m-1 " placeholder="description" required></textarea>
                     <br />
                     <input
-                        className='btn btn-accent text-white' type="submit" value="Submit"
+                        className='btn bg-[#020d23] text-white' type="submit" value="Submit"
                     />
                 </form>
             </Modal>

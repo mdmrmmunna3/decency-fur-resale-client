@@ -18,7 +18,7 @@ const CheckoutForm = ({ order }) => {
 
 
     useEffect(() => {
-        fetch("http://localhost:5000/create-payment-intent", {
+        fetch("https://decency-fur-resale-server.vercel.app/create-payment-intent", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -84,7 +84,7 @@ const CheckoutForm = ({ order }) => {
 
             }
 
-            fetch("http://localhost:5000/payments", {
+            fetch("https://decency-fur-resale-server.vercel.app/payments", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

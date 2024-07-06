@@ -7,7 +7,7 @@ import Loading from '../../Shared/Loading/Loading';
 const AllBuyers = () => {
     const { user } = useContext(AuthContext);
 
-    const url = `http://localhost:5000/allusers?email=${user?.email}`
+    const url = `https://decency-fur-resale-server.vercel.app/allusers?email=${user?.email}`
     // console.log(url);
     const { data: users = [], isLoading } = useQuery({
         queryKey: ['users', user?.email],
