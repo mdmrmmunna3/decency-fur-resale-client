@@ -36,7 +36,7 @@ const CoustomerTestimonial = () => {
                 <p className='text-center font-semibold my-2'>Good experience as a first time buyer. Friendly and great sales service. Will recommend to friends and family.</p>
             </div>
 
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12'>
+            <div className='grid  md:grid-cols-2 lg:grid-cols-3 gap-6'>
                 {
                     customerReviews.map(reviews => <Review key={reviews._id} reviews={reviews}></Review>)
                 }

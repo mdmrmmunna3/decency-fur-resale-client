@@ -27,7 +27,7 @@ const AllBuyers = () => {
 
     return (
 
-        <div>
+        <div className='pt-20'>
             <h2 className='text-center navbar-title lg:text-3xl text-2xl my-8'>All Buyers</h2>
 
             <div className="overflow-x-auto">

@@ -58,7 +58,8 @@ const AllUsers = () => {
     }
 
     return (
-        <div>
+        <div className='pt-20'>
+            <h2 className='text-center text-2xl lg:text-3xl navbar-title my-8'>All Users</h2>
             <div className="overflow-x-auto">
                 <table className="table w-full">
                     <thead>

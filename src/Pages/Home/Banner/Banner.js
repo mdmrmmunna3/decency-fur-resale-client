@@ -1,8 +1,8 @@
 import React from 'react';
 import car1 from '../../../assets/banner/car1.png';
-import car2 from '../../../assets/banner/car2.png';
-import car3 from '../../../assets/banner/car3.png';
-import car4 from '../../../assets/banner/car4.png';
+import car2 from '../../../assets/banner/car2.jpg';
+import car3 from '../../../assets/banner/car3.jpg';
+import car4 from '../../../assets/banner/car4.jpg';
 import './Banner.css';
 
 const Banner = () => {

@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 import './Navbar.css';
 import logo from '../../../assets/logo/images.png'
@@ -10,14 +10,14 @@ import drawerImg from "../../../assets/icon/button.png"
 
 const Nabvar = () => {
     const { user, logOut, userRoleInfo } = useContext(AuthContext);
+    const location = useLocation();
+    const [iconSwap, setIconSwap] = useState(false);
 
     const handleLogOut = () => {
         logOut()
             .then(() => { })
             .catch(err => console.error(err));
     }
-
-    const [iconSwap, setIconSwap] = useState(false);
 
     const handleIconSwap = () => {
         setIconSwap(!iconSwap)
@@ -45,45 +45,18 @@ const Nabvar = () => {
                 {/* dashboard role condition end */}
 
                 <li><Link to="/login"><button onClick={handleLogOut}>SignOut</button></Link></li>
-                <li><img className='w-16 h-16 rounded-full' src={user?.photoURL} alt="" /></li>
+                <li><img className='w-16 h-16 ' style={{ borderRadius: '50%' }} src={user?.photoURL} alt="" /></li>
             </>
             :
-            <li><Link to="/login">Login</Link></li>}
-        <li className='text-white'><FaUserCircle></FaUserCircle></li>
+            <>
+                <li><Link to="/login">Login</Link></li>
+                <li className='text-white'><FaUserCircle></FaUserCircle></li>
+            </>
+        }
     </React.Fragment>
+
+    const isDashboardRoute = location.pathname.includes('/dashboard');
     return (
-        // <div
-        //     style={{
-        //         boxShadow: `rgba(143, 194, 197, 0.356) 0px 5px 15px`,
-        //         backdropFilter: `blur(8px)`
-        //     }}
-        //     className='mb-1 fixed z-10 text-blue-400 p-2'>
-        //     <div className="navbar flex justify-between">
-        //         <div className="navbar-start">
-        //             <div className="dropdown">
-        //                 <label tabIndex={0} className="btn btn-ghost lg:hidden">
-        //                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
-        //                 </label>
-        //                 <ul tabIndex={1} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-        //                     {menuItems}
-        //                 </ul>
-        //             </div>
-
-        //             <Link to="/"><img className='h-20 w-28 p-0' src={logo} alt="" /></Link>
-        //             <Link to="/" className="normal-case lg:text-2xl navbar-title text-xl p-0">Decency Fur ReSale</Link>
-
-        //         </div>
-        //         <div className="navbar-end hidden lg:flex">
-        //             <ul className="menu menu-horizontal p-0 rounded-lg">
-        //                 {menuItems}
-        //             </ul>
-        //         </div>
-
-        //         <label htmlFor="dashboard-drawer" tabIndex={2} className="btn btn-ghost lg:hidden">
-        //             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
-        //         </label>
-        //     </div>
-        // </div>
 
         <section>
             <div
@@ -99,7 +72,7 @@ const Nabvar = () => {
                             <img src={logo} className="md:w-20 w-24 " alt="" ></img>
                         </span>
                         <div className="div">
-                            <p className="md:text-3xl text-sm navbar-title" style={{ letterSpacing: '3px' }}>Decency Fur ReSale</p>
+                            <p className="md:text-2xl text-sm navbar-title" style={{ letterSpacing: '3px' }}>Decency Fur ReSale</p>
                         </div>
                     </Link>
                 </div>
@@ -128,17 +101,13 @@ const Nabvar = () => {
                 </div>
 
             </div>
-            <div className='fixed right-11 top-28 z-10'>
-                <label htmlFor="dashboard-drawer" tabIndex={2} className=" lg:hidden">
-                    <img src={drawerImg}
-                        style={
-                            {
-                                width: '30px'
-                            }
-                        }
-                        alt='' />
-                </label>
-            </div>
+            {isDashboardRoute && (
+                <div className='fixed right-10 top-28 z-10 cursor-pointer'>
+                    <label htmlFor="dashboard-drawer" tabIndex={2} className="lg:hidden">
+                        <img src={drawerImg} style={{ width: '30px' }} alt="Drawer Icon" />
+                    </label>
+                </div>
+            )}
 
         </section>
 

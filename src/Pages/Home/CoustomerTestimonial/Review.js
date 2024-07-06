@@ -5,16 +5,17 @@ const Review = ({ reviews }) => {
     // console.log(reviews)
     const { review, img, name, address } = reviews;
     return (
-        <div className="max-w-md p-6 overflow-hidden rounded-lg shadow-xl dark:bg-gray-900 dark:text-gray-100 ">
-            <div className="flex flex-col mx-4 my-6 shadow-lg">
-                <div className="px-4 py-12 rounded-t-lg sm:px-8 md:px-12 dark:bg-gray-900">
-                    <p className="relative  text-lg italic text-center dark:text-gray-100">
-                        {review}
-                    </p>
-                </div>
-                <div className="flex flex-col items-center justify-center p-8 rounded-b-lg dark:bg-violet-400 dark:text-gray-900">
+        <div className="mt-5 p-6"
+            style={{
+                boxShadow: `rgba(0, 0, 0, 0.35) 0px 5px 15px`
+            }}
+        >
+            <div className='text-center rounded-md'>
+                <div className='pt-16 flex justify-center items-center'>
                     <img src={img} alt="" className="w-16 h-16 mb-2 -mt-16 bg-center bg-cover rounded-full " />
-                    <span className='flex text-yellow-500'>
+                </div>
+                <div className='py-4'>
+                    <span className='flex justify-center text-yellow-500'>
                         <FaStar></FaStar>
                         <FaStar></FaStar>
                         <FaStar></FaStar>
@@ -24,6 +25,9 @@ const Review = ({ reviews }) => {
                     <p className="text-xl font-semibold leading-tight">{name}</p>
                     <p className="text-sm uppercase">{address}</p>
                 </div>
+                <p className=" text-lg italic text-start dark:text-gray-100">
+                    {review?.slice(0, 130)}...
+                </p>
             </div>
         </div>
     );
